@@ -1,4 +1,24 @@
-spawn ./start.sh --client1
-spawn ./start.sh --client1
-spawn ./start.sh --client1
+spawn bash start.sh --client1
 connection failed: -1
+spawn bash start.sh --client1
+connection failed: -1
+spawn ./start.sh --client1
+
+========= TINY SNS CLIENT =========
+ Command Lists and Format:
+ FOLLOW <username>
+ UNFOLLOW <username>
+ LIST
+ TIMELINE
+=====================================
+Cmd> list
+Command completed successfully
+All users: 1, 
+Followers: 
+Cmd> timeline
+Command completed successfully
+Now you are in the timeline
+p1
+p2
+p3
+^Cgnal caught 

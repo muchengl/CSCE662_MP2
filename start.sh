@@ -19,8 +19,8 @@ if [ "$arg0" = "--server1" ]; then
     ./tsd -c 1 -s 1 -h 127.0.0.1 -k 3010 -p 9000
 fi
 
-if [ "$arg0" = "--server1" ]; then
-    ./tsd -c 1 -s 1 -h 127.0.0.1 -k 3010 -p 9001
+if [ "$arg0" = "--server2" ]; then
+    ./tsd -c 2 -s 2 -h 127.0.0.1 -k 3010 -p 9001
 fi
 
 if [ "$arg0" = "--client1" ]; then

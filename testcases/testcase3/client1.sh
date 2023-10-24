@@ -1,17 +1,7 @@
 #!/usr/bin/expect 
-#!/usr/bin/bash
-sleep 1 
 
-sleep 1
-sleep 5
-spawn bash start.sh --client1
-expect eof 
+sleep 7
 
-sleep 5
-spawn bash start.sh --client1
-expect eof 
-
-sleep 5
 spawn ./start.sh --client1
 
 expect "Cmd>"
