@@ -1,0 +1,4 @@
+spawn ./start.sh --client1
+spawn ./start.sh --client1
+spawn ./start.sh --client1
+connection failed: -1
