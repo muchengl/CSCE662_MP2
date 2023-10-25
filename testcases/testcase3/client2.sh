@@ -5,7 +5,7 @@ sleep 7
 spawn ./tsc -h localhost -k 3010 -u 2
 
 # waiting for kill server2
-# sleep 1
+sleep 1
 
 # 1
 sleep 1

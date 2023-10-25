@@ -8,7 +8,21 @@ spawn ./tsc -h localhost -k 3010 -u 2
  TIMELINE
 =====================================
 Cmd> list
+Command failed
+Cmd> timeline
+Command failed
+Cmd> list
+Command failed
+Cmd> timeline
+Command failed
+Cmd> list
 Command completed successfully
 All users: 2, 
 Followers: 
-Cmd> 
+Cmd> timeline
+Command completed successfully
+Now you are in the timeline
+p1
+p2
+p3
+^Cgnal caught 
