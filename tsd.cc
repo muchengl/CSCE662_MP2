@@ -258,17 +258,24 @@ public:
 
     // create a timeline file
     timelineFile = clusterID+"_"+serverID+"_"+request->username()+".txt";
-    std::ofstream timeline_file(timelineFile);
-    if (!timeline_file.is_open()) {
-        std::cerr << "fail" << std::endl;
-        reply->set_msg("Deny");
-        return Status::OK;
+    if (!fileExists(timelineFile)) {
+      std::cout<<"Create file"<<std::endl;
+      std::ofstream timeline_file(timelineFile);
+      if (!timeline_file.is_open()) {
+          std::cerr << "fail" << std::endl;
+          reply->set_msg("Deny");
+          return Status::OK;
+      }
+      timeline_file.close();
     }
-    timeline_file.close();
-
-
+  
     reply->set_msg("OK");
     return Status::OK;
+  }
+
+  bool fileExists(const std::string& filename) {
+      std::ifstream file(filename);
+      return file.good();
   }
 
   Status Timeline(ServerContext* context, ServerReaderWriter<Message, Message>* stream) override {
@@ -360,14 +367,14 @@ public:
           
           // read all datas
           std::string filename = client_db[i].client_followers[j]->username+".txt";
-          std::ifstream timeline_file(filename);
+          std::ifstream timelinefile(timelineFile);
 
           std::vector<std::string> lines;
           std::string line;
-          while (std::getline(timeline_file, line)) {
+          while (std::getline(timelinefile, line)) {
               lines.push_back(line);
           }
-          timeline_file.close();
+          timelinefile.close();
 
           // Insert data from the header
           lines.insert(lines.begin(), record);
