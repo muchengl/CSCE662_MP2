@@ -1,0 +1,27 @@
+syntax = "proto3";
+package csce438;
+// import "google/protobuf/timestamp.proto";
+
+
+service SynchService{
+  rpc SyncFollowerInfo (FollowerList) returns (SynchConfirmation) {}
+
+//   rpc ResynchServer 
+  
+}
+
+message FollowerList {
+    repeated FollowerInfo followers = 1;
+}
+
+message FollowerInfo{
+    int32 clusterID = 1;
+    int32 serverID = 2;
+    string hostname = 3;
+    string port = 4;
+    string type = 5;
+}
+
+message SynchConfirmation{
+    bool status = 1;
+}

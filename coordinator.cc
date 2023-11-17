@@ -32,10 +32,8 @@ using grpc::Status;
 using csce438::CoordService;
 using csce438::ServerInfo;
 using csce438::Confirmation;
+using csce438::GetSlaveRequset;
 using csce438::ID;
-// using csce438::Status
-// using csce438::ServerList;
-// using csce438::SynchService;
 
 std::time_t getTimeNow(){
     return std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
@@ -45,10 +43,16 @@ struct zNode{
     int serverID;
     std::string hostname;
     std::string port;
-    std::string type;
+    std::string type; // down | alive
     std::time_t last_heartbeat;
+
+    // master | slave | synchronizer
+    bool isMaster;
+    bool isSynchronizer;
+
     bool missed_heartbeat;
     bool isActive();
+    bool isServer();
 
 };
 
@@ -62,6 +66,11 @@ bool zNode::isActive(){
     }
     std::cout<<serverID<<" "<<status<<std::endl;
     return status;
+}
+
+// is a server, not a synchronizer
+bool zNode::isServer(){
+    return !isSynchronizer;
 }
 
 //potentially thread safe
@@ -80,85 +89,258 @@ class CoordServiceImpl final : public CoordService::Service {
 
   
   Status Heartbeat(ServerContext* context, const ServerInfo* serverinfo, Confirmation* confirmation) override {
-    //std::cout<<"Got Heartbeat! "<<serverinfo->type()<<"("<<serverinfo->serverid()<<")"<<std::endl;
-
+    //std::cout<<"Got Heartbeat! "<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+    // serverinfo.
     // Your code here
-    int id=serverinfo->serverid();
+    v_mutex.lock();
+
+    int id=serverinfo->clusterid();
+    int serverId=serverinfo->serverid();
     if(id==1){
-      cluster1[cluster1.size()-1].last_heartbeat=getTimeNow();
+      for(int i=0;i<cluster1.size();i++){
+        if(serverId == cluster1[i].serverID){
+          cluster1[i].last_heartbeat=getTimeNow();
+          break;
+        }
+      }
     }
     if(id==2){
-      cluster2[cluster2.size()-1].last_heartbeat=getTimeNow();
+      for(int i=0;i<cluster2.size();i++){
+        if(serverId == cluster2[i].serverID){
+          cluster2[i].last_heartbeat=getTimeNow();
+          break;
+        }
+      }
     }
     if(id==3){
-      cluster3[cluster3.size()-1].last_heartbeat=getTimeNow();
+      for(int i=0;i<cluster3.size();i++){
+        if(serverId == cluster3[i].serverID){
+          cluster3[i].last_heartbeat=getTimeNow();
+          break;
+        }
+      }
     }
 
     confirmation->set_status(true);
+
+     v_mutex.unlock();
     return Status::OK;
   }
   
+  void init_serverinfo(ServerInfo* serverinfo,zNode node,int cid){
+    serverinfo->set_clusterid((int32_t)cid);
+    serverinfo->set_serverid((int32_t)node.serverID);
+    serverinfo->set_hostname(node.hostname);
+    serverinfo->set_port(node.port);
+    serverinfo->set_type("alive");
+  }
+
   //function returns the server information for requested client id
   //this function assumes there are always 3 clusters and has math
   //hardcoded to represent this.
   Status GetServer(ServerContext* context, const ID* id, ServerInfo* serverinfo) override {
     //std::cout<<"Got GetServer for clientID: "<<id->id()<<std::endl;
-    int serverID = (id->id()%3)+1;
+    int userID = id->id();
+    int clusterID = ((userID-1)%3)+1;
 
     // Your code here
-    // If server is active, return serverinfo
-    int idf = id->id();
+    
+    // 1.check master node
+    // 2.if master node not exist, return the first alive node
+
+    // int userID = id->id();
     serverinfo->set_type("down");
 
-    if(idf==1){
-      serverinfo->set_clusterid((int32_t)1);
-      serverinfo->set_serverid((int32_t)idf);
-      serverinfo->set_hostname(cluster1[cluster1.size()-1].hostname);
-      serverinfo->set_port(cluster1[cluster1.size()-1].port);
-      if(cluster1[cluster1.size()-1].isActive()) serverinfo->set_type("alive");
+    if(clusterID==1){
+      bool find=false;
+      for(int i=0;i<cluster1.size();i++){
+        if(cluster1[i].isMaster){
+          std::cout<<"Find master, cluster1 - server"<<cluster1[i].serverID<<std::endl;
+          init_serverinfo(serverinfo,cluster1[i],clusterID);
+
+          find=true;
+          break;
+        }
+      }
+      if(!find)
+      for(int i=0;i<cluster1.size();i++){
+        if(cluster1[i].type == "alive" && cluster1[i].isServer()){
+          std::cout<<"New master, cluster1 - server"<<cluster1[i].serverID<<std::endl;
+          cluster1[i].isMaster=true;
+
+          init_serverinfo(serverinfo,cluster1[i],clusterID);
+
+          break;
+        }
+      }
     }
-    else if(idf==2){
-      serverinfo->set_clusterid((int32_t)2);
-      serverinfo->set_serverid((int32_t)idf);
-      serverinfo->set_hostname(cluster2[cluster2.size()-1].hostname);
-      serverinfo->set_port(cluster2[cluster2.size()-1].port);
-      if(cluster2[cluster2.size()-1].isActive()) serverinfo->set_type("alive");
+
+    else if(clusterID==2){
+      bool find=false;
+      for(int i=0;i<cluster2.size();i++){
+        if(cluster2[i].isMaster){
+          std::cout<<"Find master, cluster2 - server"<<cluster2[i].serverID<<std::endl;
+
+          init_serverinfo(serverinfo,cluster2[i],clusterID);
+
+          find=true;
+          break;
+        }
+      }
+      if(!find)
+      for(int i=0;i<cluster2.size();i++){
+        if(cluster2[i].type == "alive" && cluster2[i].isServer()){
+          std::cout<<"New master, cluster2 - server"<<cluster2[i].serverID<<std::endl;
+          cluster2[i].isMaster=true;
+
+          init_serverinfo(serverinfo,cluster2[i],clusterID);
+
+          break;
+        }
+      }
     }
-    else if(idf==3){
-      serverinfo->set_clusterid((int32_t)3);
-      serverinfo->set_serverid((int32_t)idf);
-      serverinfo->set_hostname(cluster2[cluster2.size()-1].hostname);
-      serverinfo->set_port(cluster2[cluster2.size()-1].port);
-      if(cluster3[cluster3.size()-1].isActive()) serverinfo->set_type("alive");
+
+    else if(clusterID==3){
+      bool find=false;
+      for(int i=0;i<cluster3.size();i++){
+        if(cluster3[i].isMaster){
+          std::cout<<"Find master, cluster3 - server"<<cluster3[i].serverID<<std::endl;
+
+          init_serverinfo(serverinfo,cluster3[i],clusterID);
+
+          find=true;
+          break;
+        }
+      }
+      if(!find)
+      for(int i=0;i<cluster3.size();i++){
+        if(cluster3[i].type == "alive" && cluster3[i].isServer()){
+          std::cout<<"New master, cluster3 - server"<<cluster3[i].serverID<<std::endl;
+          cluster3[i].isMaster=true;
+
+          init_serverinfo(serverinfo,cluster3[i],clusterID);
+          break;
+        }
+      }
     }
 
     return Status::OK;
   }
 
+  // When a server start, it will call this function to regisiter itself to coordinator
   Status Create(ServerContext* context, const ServerInfo* serverinfo, Confirmation* confirmation) override {
+    //std::cout<<"Got Create! "<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
     zNode node=*(new zNode());
 
     node.hostname=serverinfo->hostname();
     node.last_heartbeat=getTimeNow();
     node.serverID=serverinfo->serverid();
     node.port=serverinfo->port();
+    node.type="alive";
+
+    if(serverinfo->servertype()=="synchronizer" || serverinfo->servertype()!="server"){
+      std::cout<<"New Synchronizer "<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+      node.isSynchronizer=true;
+    }
 
     int cid=serverinfo->clusterid();
+    // Cluster 1
     if(cid==1){
-      cluster1.push_back(node);
+      bool find=false;
+      for(int i=0;i<cluster1.size();i++){
+        if(cluster1[i].serverID == node.serverID){
+          std::cout<<"ReNew Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+          node.type = "alive";
+          find=true;
+          break;
+        }
+      }
+      if(!find) {
+        std::cout<<"New Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+        cluster1.push_back(node);
+      }
     }
+
+    // Cluster 2
     if(cid==2){
-      cluster2.push_back(node);
+      bool find=false;
+      for(int i=0;i<cluster2.size();i++){
+        if(cluster2[i].serverID == node.serverID){
+          std::cout<<"ReNew Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+          node.type = "alive";
+          find=true;
+          break;
+        }
+      }
+      if(!find) {
+         std::cout<<"New Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+          cluster2.push_back(node);
+      }
     }
+
+    // Cluster 3
     if(cid==3){
-      cluster3.push_back(node);
+      bool find=false;
+      for(int i=0;i<cluster3.size();i++){
+        if(cluster3[i].serverID == node.serverID){
+          std::cout<<"ReNew Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+          node.type = "alive";
+          find=true;
+          break;
+        }
+      }
+      if(!find) {
+         std::cout<<"New Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
+        cluster3.push_back(node);
+      }
     }
     
     return Status::OK;
   }
+
   
+  Status GetSlave(ServerContext* context, const GetSlaveRequset* getSlaveRequset, ServerInfo* serverinfo) override {
+    int id=getSlaveRequset->clusterid();
+    if(id==1){
+      for(int i=0;i<cluster1.size();i++){
+        if(cluster1[i].isMaster==false){
+          serverinfo->set_clusterid(id);
+          serverinfo->set_serverid(cluster1[i].serverID);
+          serverinfo->set_hostname(cluster1[i].hostname);
+          serverinfo->set_port(cluster1[i].port);
+          break;
+        }
+      }
+    }
+    else if(id==2){
+       for(int i=0;i<cluster2.size();i++){
+        if(cluster2[i].isMaster==false){
+          serverinfo->set_clusterid(id);
+          serverinfo->set_serverid(cluster2[i].serverID);
+          serverinfo->set_hostname(cluster2[i].hostname);
+          serverinfo->set_port(cluster2[i].port);
+          break;
+        }
+      }
+    }
+    else if(id==3){
+       for(int i=0;i<cluster3.size();i++){
+        if(cluster3[i].isMaster==false){
+          serverinfo->set_clusterid(id);
+          serverinfo->set_serverid(cluster3[i].serverID);
+          serverinfo->set_hostname(cluster3[i].hostname);
+          serverinfo->set_port(cluster3[i].port);
+          break;
+        }
+      }
+    }
+    return Status::OK;
+  }
+
 
 };
+
+
 
 void RunServer(std::string port_no){
   //start thread to check heartbeats
@@ -207,34 +389,42 @@ void checkHeartbeat(){
       //check servers for heartbeat > 10
       //if true turn missed heartbeat = true
       // Your code below
-      std::vector<zNode> servers;
-      if(cluster1.size()!=0){
-        servers.push_back(
-          cluster1[cluster1.size()-1]
-        );
+      std::vector<zNode*> servers;
+      if(cluster1.size()!=0){ 
+        for(int i=0;i<cluster1.size();i++){
+            servers.push_back(
+              &cluster1[i]
+            );
+        }
       }
       if(cluster2.size()!=0){
-        servers.push_back(
-          cluster2[cluster2.size()-1]
-        );
+         for(int i=0;i<cluster2.size();i++){
+            servers.push_back(
+              &cluster2[i]
+            );
+        }
       }
       if(cluster3.size()!=0){
-        servers.push_back(
-          cluster3[cluster3.size()-1]
-        );
+         for(int i=0;i<cluster3.size();i++){
+            servers.push_back(
+              &cluster3[i]
+            );
+        }
       }
 
       for(auto& s : servers){
-        if(difftime(getTimeNow(),s.last_heartbeat)>10){
-          std::cout<<"check "<<s.serverID<<" is down"<<std::endl;
-          s.missed_heartbeat = true;
-          s.type="down";
-          // if(!s.missed_heartbeat){
-          //   s.missed_heartbeat = true;
-          //   s.last_heartbeat = getTimeNow();
-          // }else{
-          //   s.type="down";
-          // }
+        if(difftime(getTimeNow(),s->last_heartbeat)>10){
+          std::cout<<"check "<<s->serverID<<" is down"<<std::endl;
+          s->missed_heartbeat = true;
+          s->type="down";
+          
+          if(s->isMaster==true){
+            s->isMaster=false;
+          }
+        }
+        else{
+          s->missed_heartbeat = false;
+          s->type="alive";
         }
       }
       

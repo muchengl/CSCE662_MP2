@@ -368,7 +368,7 @@ void TimelineRead(std::shared_ptr<grpc::ClientReaderWriter<Message,Message>> rw)
     // print info
     std::time_t timeValue = static_cast<time_t>(message->timestamp().seconds());
     displayPostMessage(message->username(),message->msg(),timeValue);
-    std::cout<<"\n";
+    // std::cout<<"\n";
   }
 }
 
@@ -414,7 +414,6 @@ void Client::Timeline(const std::string& username) {
     // loop forever
     while(true){}
     
-    // Log out
 }
 
 

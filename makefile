@@ -31,12 +31,15 @@ GRPC_CPP_PLUGIN = grpc_cpp_plugin
 GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 PROTOS_PATH = .
 
-all: system-check tsc tsd coordinator 
+all: system-check tsc tsd synchronizer coordinator 
 
 tsc: client.o coordinator.pb.o coordinator.grpc.pb.o sns.pb.o sns.grpc.pb.o tsc.o
 	$(CXX) $^ $(LDFLAGS) -g -o $@
 
 tsd: coordinator.pb.o coordinator.grpc.pb.o sns.pb.o sns.grpc.pb.o tsd.o
+	$(CXX) $^ $(LDFLAGS) -g -o $@
+
+synchronizer: coordinator.pb.o coordinator.grpc.pb.o synchronizer.pb.o synchronizer.grpc.pb.o synchronizer.o 
 	$(CXX) $^ $(LDFLAGS) -g -o $@
 
 coordinator: coordinator.pb.o coordinator.grpc.pb.o coordinator.o

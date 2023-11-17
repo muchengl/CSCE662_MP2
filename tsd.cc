@@ -67,11 +67,17 @@ using csce438::Request;
 using csce438::Reply;
 using csce438::SNSService;
 
+using grpc::ClientReader;
+using grpc::ClientReaderWriter;
+using grpc::ClientWriter;
+using grpc::ClientContext;
+
 using csce438::CoordService;
 using grpc::Channel;
 using grpc::ClientContext;
 using csce438::Confirmation;
 using csce438::ServerInfo;
+using csce438::GetSlaveRequset;
 
 
 struct Client {
@@ -84,7 +90,17 @@ struct Client {
   bool operator==(const Client& c1) const{
     return (username == c1.username);
   }
+  void loadFollowerAndFollowingFromFile();
+  void writeFollowerAndFollowingtoFile();
 };
+
+void Client::loadFollowerAndFollowingFromFile(){
+  
+}
+
+void Client::writeFollowerAndFollowingtoFile(){
+
+}
 
 //Vector that stores every client that has been created
 std::vector<Client> client_db;
@@ -97,10 +113,48 @@ public:
   std::string coordinatorIP;
   std::string coordinatorPort;
 
-  std::string timelineFile;
-
   std::shared_ptr<CoordService::Stub> stub_;
+  
+  std::string getTimelineFileName(std::string username){
+    std::string timelineFile = "TIMELINE_"+clusterID+"_"+serverID+"_"+username+".txt";
+    return timelineFile;
+  }
+  std::string getFollowerFileName(std::string username){
+    std::string timelineFile = "FOLLOWER_"+clusterID+"_"+serverID+"_"+username+".txt";
+    return timelineFile;
+  }
+  std::string getFollowingFileName(std::string username){
+    std::string timelineFile = "FOLLOWING_"+clusterID+"_"+serverID+"_"+username+".txt";
+    return timelineFile;
+  }
 
+  std::shared_ptr<SNSService::Stub>  get_slave_stub(){
+    // 1. get slave info
+    ClientContext *context = new ClientContext(); 
+
+    GetSlaveRequset *req = new GetSlaveRequset();
+    req->set_clusterid(atoi(clusterID.c_str()));
+
+    ServerInfo *reply = new ServerInfo();
+    stub_->GetSlave(context,*req,reply);
+    if(std::to_string(reply->serverid()) == serverID) {
+      std::cout<<"I am slave"<<std::endl;
+      return std::shared_ptr<SNSService::Stub>();
+    }
+
+    std::cout<<"My slave is: "<<reply->serverid()<<", Host: "<<reply->hostname()<<", Port: "<<reply->port()<<std::endl;
+    std::string host = reply->hostname();
+    std::string port = reply->port();
+
+    // 2. connect to slave
+    std::string login_info(host + ":" + port);
+
+    grpc::ChannelArguments channel_args;
+    std::shared_ptr<Channel> slave_channel = grpc::CreateCustomChannel(login_info, grpc::InsecureChannelCredentials(), channel_args);
+    std::shared_ptr<SNSService::Stub> slave_stub_ = SNSService::NewStub(slave_channel);
+
+    return slave_stub_;
+  }
 
   Status List(ServerContext* context, const Request* request, ListReply* list_reply) override {
     // By Hanzhong Liu
@@ -168,8 +222,21 @@ public:
     user->client_following.insert(user->client_following.begin(),target);
     target->client_followers.insert(target->client_followers.begin(),user);
 
+    // forward to slave
+    follow_to_slave(request);
+
     reply->set_msg("OK");
     return Status::OK; 
+  }
+
+  void follow_to_slave(const Request* request){
+    std::shared_ptr<SNSService::Stub> slave_stub_ = get_slave_stub();
+    if(!slave_stub_) return;
+
+    // 3. send req
+    Reply *r=new Reply();
+    ClientContext *context = new ClientContext(); 
+    slave_stub_->Follow(context,*request,r);
   }
 
   Status UnFollow(ServerContext* context, const Request* request, Reply* reply) override {
@@ -225,8 +292,20 @@ public:
         idx++;
     }
 
+    unfollow_to_slave(request);
+
     reply->set_msg("OK");
     return Status::OK; 
+  }
+
+  void unfollow_to_slave(const Request* request){
+    std::shared_ptr<SNSService::Stub> slave_stub_ = get_slave_stub();
+    if(!slave_stub_) return;
+
+    // 3. send req
+    Reply *r=new Reply();
+    ClientContext *context = new ClientContext(); 
+    slave_stub_->UnFollow(context,*request,r);
   }
 
   // RPC Login
@@ -257,7 +336,7 @@ public:
     client_db.insert(client_db.begin(),*newClient);
 
     // create a timeline file
-    timelineFile = clusterID+"_"+serverID+"_"+request->username()+".txt";
+    std::string timelineFile = getTimelineFileName(request->username());
     if (!fileExists(timelineFile)) {
       std::cout<<"Create file"<<std::endl;
       std::ofstream timeline_file(timelineFile);
@@ -269,8 +348,22 @@ public:
       timeline_file.close();
     }
   
+    // forward to slave
+    login_to_slave(request);
+
+
     reply->set_msg("OK");
     return Status::OK;
+  }
+
+  void login_to_slave(const Request* request){
+    std::shared_ptr<SNSService::Stub> slave_stub_ = get_slave_stub();
+    if(!slave_stub_) return;
+
+    // 3. send req
+    Reply *r=new Reply();
+    ClientContext *context = new ClientContext(); 
+    slave_stub_->Login(context,*request,r);
   }
 
   bool fileExists(const std::string& filename) {
@@ -278,25 +371,13 @@ public:
       return file.good();
   }
 
-  Status Timeline(ServerContext* context, ServerReaderWriter<Message, Message>* stream) override {
-    // By Hanzhong Liu
-    Message m;
-    while(stream->Read(&m)){
-      std::unique_lock<std::mutex> lock(mu);
 
-      // new login
-      if(m.msg() == "join_timeline"){
-        std::cout<<"USER: "<<m.username()<<" JOIN!"<<std::endl;
-        for(int i=0;i<client_db.size();i++){
-           if(client_db[i].username == m.username()){
-            client_db[i].stream=stream;
-           }
-        }
-
+  void send_top20msg(ServerReaderWriter<Message, Message>* stream,Message m){
         /*
           get 20 msgs and send them to user
         */ 
-        std::ifstream timeline_file(m.username()+".txt");
+        std::string filename = getTimelineFileName(m.username());
+        std::ifstream timeline_file(filename);
         
         int idx=0;
         std::string line;
@@ -328,45 +409,20 @@ public:
 
           // send msg to user
           stream->Write(m);          
-        }
-       
-        lock.unlock();
-        continue;
-      }
+        } 
+  }
 
-      // publid a msg
-      // publish msg to all followers' timeline
-      
-      std::string time = google::protobuf::util::TimeUtil::ToString(m.timestamp());
-      std::string record=m.username()+" "+m.msg()+" "+time;
-
-      for(int i=0;i<client_db.size();i++){
-        if(client_db[i].username != m.username()){
-          continue;
-        }
-
-        client_db[i].client_followers.push_back(&client_db[i]);
-
-        for(int j=0;j<client_db[i].client_followers.size();j++){
-          std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg"<<"\n";
-
-          // user has not enter timeline
-          if(client_db[i].client_followers[j]->stream==nullptr){
-            std::cout<<"NULL! can't send to follower"<<"\n";
-          }
-          else if(client_db[i].client_followers[j]->username != client_db[i].username){ // can't send msg to it self
-            client_db[i].client_followers[j]->stream->Write(m);
-            std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg finish"<<"\n";
-          }
-          
+  void write_timeline_file(std::string record,std::string follower_name){
           /* 
             write file to user's time line
             new msg will be install into the top of the fimeline file
           */
           std::cout<<"WRITE FILE ============="<<"\n";
           
-          // read all datas
-          std::string filename = client_db[i].client_followers[j]->username+".txt";
+          // open follower's timeline file
+          std::string timelineFile = getTimelineFileName(
+            follower_name
+          );
           std::ifstream timelinefile(timelineFile);
 
           std::vector<std::string> lines;
@@ -385,10 +441,83 @@ public:
               timeline_file_stream << modified_line << std::endl;
           }
           timeline_file_stream.close();
+  }
+
+  void publish_to_follower(std::string record,ServerReaderWriter<Message, Message>* stream,Message m){
+    // user has not enter timeline
+    if(stream==nullptr){
+      std::cout<<"NULL! can't send to follower"<<"\n";
+      return;
+    }
+
+    // user already enter timeline, send to it
+    stream->Write(m);
+  }
+
+  Status Timeline(ServerContext* context, ServerReaderWriter<Message, Message>* stream) override {
+    // By Hanzhong Liu
+    Message m;
+    while(stream->Read(&m)){
+      std::unique_lock<std::mutex> lock(mu);
+
+      // new login
+      if(m.msg() == "join_timeline"){
+
+        std::cout<<"USER: "<<m.username()<<" JOIN TIMELINE!"<<std::endl;
+        for(int i=0;i<client_db.size();i++){
+           if(client_db[i].username == m.username()){
+            client_db[i].stream=stream;
+           }
         }
 
-        client_db[i].client_followers.pop_back();
+        /*
+          get 20 msgs and send them to user
+        */ 
+        send_top20msg(stream,m);
+       
+        lock.unlock();
+        continue;
       }
+
+      /* 
+        publish msg to all followers' timeline
+      */
+      
+      std::string time = google::protobuf::util::TimeUtil::ToString(m.timestamp());
+      std::string record=m.username()+" "+m.msg()+" "+time;
+
+      for(int i=0;i<client_db.size();i++){
+        if(client_db[i].username != m.username()){
+          continue;
+        }
+
+        //client_db[i].client_followers.push_back(&client_db[i]);
+
+        for(int j=0;j<client_db[i].client_followers.size();j++){
+          
+          // publish msg to follower
+          if(client_db[i].client_followers[j]->username != client_db[i].username){ // can't send msg to it self
+            std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg"<<"\n";
+
+            publish_to_follower(record,client_db[i].client_followers[j]->stream,m);
+
+            std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg finish"<<"\n";
+          }
+
+          /* 
+            write to user's time line
+            new msg will be install into the top of the fimeline file
+          */
+          write_timeline_file(
+            record,
+            client_db[i].client_followers[j]->username
+          );
+        }
+
+        //lient_db[i].client_followers.pop_back();
+      }
+
+      timeline_to_slave(m);
       lock.unlock();
     }
 
@@ -396,15 +525,28 @@ public:
     return Status::OK;
   }
 
+  void timeline_to_slave(Message message){
+    std::shared_ptr<SNSService::Stub> slave_stub_ = get_slave_stub();
+    if(!slave_stub_) return;
+
+    // 3. send req
+    ClientContext *context = new ClientContext();  
+    std::shared_ptr<ClientReaderWriter<Message,Message>> rw = slave_stub_->Timeline(context);
+    rw->Write(message);
+  }
+
 };
 
-void Heartbeat(std::shared_ptr<CoordService::Stub> stub_,std::string *serverID){
+
+
+void Heartbeat(std::shared_ptr<CoordService::Stub> stub_,std::string *serverID,std::string *clusterID){
   while (true)
   {
     
     ClientContext *context = new ClientContext();  
     ServerInfo *info = new ServerInfo();
     info->set_serverid(atoi(serverID->c_str()));
+    info->set_clusterid(atoi(clusterID->c_str()));
 
     Confirmation *reply=new Confirmation();
 
@@ -412,7 +554,7 @@ void Heartbeat(std::shared_ptr<CoordService::Stub> stub_,std::string *serverID){
     
     //std::cout<<"Send Heartbeat MSG:"<<atoi(serverID->c_str())<<std::endl;
 
-    sleep(0.5);
+    sleep(1);
   }
   
 }
@@ -433,10 +575,19 @@ void RunServer(
   service.coordinatorPort=coordinatorPort;
 
   ServerInfo *info = new ServerInfo();
-  info->set_clusterid(atoi(clusterID.c_str()));
-  info->set_serverid(atoi(serverID.c_str()));
+  int id=atoi(clusterID.c_str());
+  // std::cout<<"clusterID: "<<id<<std::endl;
+  info->set_clusterid(id);
+
+  id=atoi(serverID.c_str());
+  // std::cout<<"serverID: "<<id<<std::endl;
+  info->set_serverid(id);
+
   info->set_hostname("127.0.0.1");
   info->set_port(port_no);
+
+  // work as a server, not Synchronizer
+  info->set_servertype("server");
 
 
   // connect to coordinator service
@@ -451,9 +602,10 @@ void RunServer(
   Confirmation *reply=new Confirmation();
   stub->Create(context,*info,reply);
 
-  std::thread hb([stub,clusterID]{
-      std::string id=clusterID;
-      Heartbeat(stub,&id);
+  std::thread hb([stub,serverID,clusterID]{
+      std::string cid=clusterID;
+      std::string sid=serverID;
+      Heartbeat(stub,&sid,&cid);
   });
 	hb.detach();
 
@@ -499,6 +651,7 @@ int main(int argc, char** argv) {
   std::string log_file_name = std::string("server-") + port;
   google::InitGoogleLogging(log_file_name.c_str());
   log(INFO, "Logging Initialized. Server starting...");
+  std::cout<<"clusterID:"<<clusterID<<" serverID:"<<serverID<<std::endl;
   RunServer(port,clusterID,serverID,coordinatorIP,coordinatorPort);
 
   return 0;

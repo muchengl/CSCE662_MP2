@@ -12,10 +12,10 @@ service CoordService{
   rpc Heartbeat (ServerInfo) returns (Confirmation) {}
   rpc GetServer (ID) returns (ServerInfo) {}
   // rpc GetAllServers (GetAllServersRequset) returns (ServerInfo) {}
+  rpc GetSlave(GetSlaveRequset) returns (ServerInfo) {}
 
   // ZooKeeper API here
   rpc Create(ServerInfo) returns (Confirmation) {}
-  rpc Exists(CreateDirRequest) returns (Confirmation) {}
 }
 
 //server info message definition
@@ -25,6 +25,9 @@ message ServerInfo{
   string hostname = 3;
   string port = 4;
   string type = 5;
+
+  // server | synchronizer
+  string serverType = 6;
 }
 
 //confirmation message definition
@@ -45,6 +48,11 @@ message GetAllServersResponse{
 message CreateDirRequest{
   string path = 1;
   string data = 2;
+}
+
+message GetSlaveRequset{
+  int32 clusterID = 1;
+  int32 serverID = 2;
 }
 
 
