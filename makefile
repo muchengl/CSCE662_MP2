@@ -36,7 +36,7 @@ all: system-check tsc tsd synchronizer coordinator
 tsc: client.o coordinator.pb.o coordinator.grpc.pb.o sns.pb.o sns.grpc.pb.o tsc.o
 	$(CXX) $^ $(LDFLAGS) -g -o $@
 
-tsd: coordinator.pb.o coordinator.grpc.pb.o sns.pb.o sns.grpc.pb.o tsd.o
+tsd: coordinator.pb.o coordinator.grpc.pb.o synchronizer.pb.o synchronizer.grpc.pb.o sns.pb.o sns.grpc.pb.o tsd.o
 	$(CXX) $^ $(LDFLAGS) -g -o $@
 
 synchronizer: coordinator.pb.o coordinator.grpc.pb.o synchronizer.pb.o synchronizer.grpc.pb.o synchronizer.o 

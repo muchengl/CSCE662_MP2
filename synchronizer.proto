@@ -1,27 +1,38 @@
 syntax = "proto3";
 package csce438;
-// import "google/protobuf/timestamp.proto";
-
 
 service SynchService{
-  rpc SyncFollowerInfo (FollowerList) returns (SynchConfirmation) {}
+  rpc GetAllUsers(GetAllUsersRequest) returns (AllUsers) {}
 
-//   rpc ResynchServer 
-  
+  rpc GetFL(GetFLRequest) returns (GetFLResponse){}
+
+  rpc GetTL(GetTLRequest) returns (GetTLResponse){} 
+
+  rpc ResynchServer(ResynchServerRequest) returns (ResynchServerResponse){}
 }
 
-message FollowerList {
-    repeated FollowerInfo followers = 1;
+message GetAllUsersRequest{}
+message AllUsers {
+    repeated string allUsers = 1;
 }
 
-message FollowerInfo{
-    int32 clusterID = 1;
-    int32 serverID = 2;
-    string hostname = 3;
-    string port = 4;
-    string type = 5;
+message GetFLRequest{}
+message GetFLResponse{
+  repeated string lines = 1;
 }
 
-message SynchConfirmation{
-    bool status = 1;
+message GetTLRequest{
+  int32 uid = 1;
 }
+message GetTLResponse{
+  repeated string lines = 1;
+}
+
+message ResynchServerRequest{
+  int32 serverID =1;
+}
+message ResynchServerResponse{
+  string Status = 1;
+}
+
+

@@ -34,6 +34,8 @@ using csce438::ServerInfo;
 using csce438::Confirmation;
 using csce438::GetSlaveRequset;
 using csce438::ID;
+using csce438::GetAllServersRequset;
+using csce438::GetAllServersResponse;
 
 std::time_t getTimeNow(){
     return std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
@@ -87,7 +89,6 @@ void checkHeartbeat();
 
 class CoordServiceImpl final : public CoordService::Service {
 
-  
   Status Heartbeat(ServerContext* context, const ServerInfo* serverinfo, Confirmation* confirmation) override {
     //std::cout<<"Got Heartbeat! "<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
     // serverinfo.
@@ -133,6 +134,9 @@ class CoordServiceImpl final : public CoordService::Service {
     serverinfo->set_hostname(node.hostname);
     serverinfo->set_port(node.port);
     serverinfo->set_type("alive");
+    if(node.isSynchronizer) serverinfo->set_servertype("synchronizer");
+    else serverinfo->set_servertype("server");
+    
   }
 
   //function returns the server information for requested client id
@@ -248,7 +252,7 @@ class CoordServiceImpl final : public CoordService::Service {
     if(cid==1){
       bool find=false;
       for(int i=0;i<cluster1.size();i++){
-        if(cluster1[i].serverID == node.serverID){
+        if(cluster1[i].serverID == node.serverID && cluster1[i].isSynchronizer==node.isSynchronizer){
           std::cout<<"ReNew Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
           node.type = "alive";
           find=true;
@@ -265,7 +269,7 @@ class CoordServiceImpl final : public CoordService::Service {
     if(cid==2){
       bool find=false;
       for(int i=0;i<cluster2.size();i++){
-        if(cluster2[i].serverID == node.serverID){
+        if(cluster2[i].serverID == node.serverID && cluster2[i].isSynchronizer==node.isSynchronizer){
           std::cout<<"ReNew Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
           node.type = "alive";
           find=true;
@@ -282,7 +286,7 @@ class CoordServiceImpl final : public CoordService::Service {
     if(cid==3){
       bool find=false;
       for(int i=0;i<cluster3.size();i++){
-        if(cluster3[i].serverID == node.serverID){
+        if(cluster3[i].serverID == node.serverID && cluster3[i].isSynchronizer==node.isSynchronizer){
           std::cout<<"ReNew Node"<<"("<<serverinfo->clusterid()<<") - ("<<serverinfo->serverid()<<")"<<std::endl;
           node.type = "alive";
           find=true;
@@ -338,6 +342,75 @@ class CoordServiceImpl final : public CoordService::Service {
   }
 
 
+  Status GetAllServers(ServerContext* context,const GetAllServersRequset *getAllServersRequset,GetAllServersResponse* getAllServersResponse) override{
+    //std::cout<<"Got GetAllServers"<<std::endl;
+
+    for(int i=0;i<cluster1.size();i++){
+      ServerInfo server_info;
+      init_serverinfo(&server_info,cluster1[i],1);
+      getAllServersResponse->add_serverlist()->CopyFrom(server_info);
+    }
+      
+    for(int i=0;i<cluster2.size();i++){
+      ServerInfo server_info;
+      init_serverinfo(&server_info,cluster2[i],1);
+      getAllServersResponse->add_serverlist()->CopyFrom(server_info);
+    }
+      
+    for(int i=0;i<cluster3.size();i++){
+      ServerInfo server_info;
+      init_serverinfo(&server_info,cluster3[i],1);
+      getAllServersResponse->add_serverlist()->CopyFrom(server_info);
+    }
+      
+   return Status::OK; 
+  }
+
+  
+  Status Exist(ServerContext* context, const ServerInfo* serverinfo, Confirmation* confirmation) override {
+  
+    int clusterID=serverinfo->clusterid();
+    std::vector<zNode> nodelist;
+    if(clusterID==1) nodelist = cluster1;
+    if(clusterID==2) nodelist = cluster2;
+    if(clusterID==3) nodelist = cluster3;
+
+      for(int i=0;i<nodelist.size();i++){
+        zNode node=nodelist[i];
+        if(node.serverID == serverinfo->serverid()){
+          if(node.isSynchronizer && serverinfo->servertype()=="synchronizer"){
+            confirmation->set_status(true);
+            return Status::OK;
+          }
+          if(!node.isSynchronizer && serverinfo->servertype()=="server"){
+            confirmation->set_status(true);
+            return Status::OK;
+          }
+        }
+      }
+
+      confirmation->set_status(false);
+      return Status::OK;
+  }
+
+
+  Status GetSynchronizer(ServerContext* context, const ID* id, ServerInfo* serverinfo) override {
+    
+    int clusterID=id->id();
+    std::vector<zNode> nodelist;
+    if(clusterID==1) nodelist = cluster1;
+    if(clusterID==2) nodelist = cluster2;
+    if(clusterID==3) nodelist = cluster3;
+
+    for(int i=0;i<nodelist.size();i++){
+      if(nodelist[i].isSynchronizer){
+        init_serverinfo(serverinfo,nodelist[i],clusterID);
+        break;
+      }
+    }
+    
+    return Status::OK;
+  }
 };
 
 
@@ -413,6 +486,7 @@ void checkHeartbeat(){
       }
 
       for(auto& s : servers){
+        if(s->isSynchronizer) continue;
         if(difftime(getTimeNow(),s->last_heartbeat)>10){
           std::cout<<"check "<<s->serverID<<" is down"<<std::endl;
           s->missed_heartbeat = true;

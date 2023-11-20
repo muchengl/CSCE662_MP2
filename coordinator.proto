@@ -11,11 +11,16 @@ package csce438;
 service CoordService{
   rpc Heartbeat (ServerInfo) returns (Confirmation) {}
   rpc GetServer (ID) returns (ServerInfo) {}
-  // rpc GetAllServers (GetAllServersRequset) returns (ServerInfo) {}
+
+  rpc GetSynchronizer (ID) returns (ServerInfo) {}
+  
+  rpc GetAllServers (GetAllServersRequset) returns (GetAllServersResponse) {}
+
   rpc GetSlave(GetSlaveRequset) returns (ServerInfo) {}
 
   // ZooKeeper API here
   rpc Create(ServerInfo) returns (Confirmation) {}
+  rpc Exist(ServerInfo) returns (Confirmation) {}
 }
 
 //server info message definition

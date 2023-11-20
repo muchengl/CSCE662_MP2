@@ -46,10 +46,16 @@
 #include <google/protobuf/util/time_util.h>
 #include <grpc++/grpc++.h>
 #include<glog/logging.h>
+
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 #define log(severity, msg) LOG(severity) << msg; google::FlushLogFiles(google::severity); 
 
 #include "sns.grpc.pb.h"
 #include "coordinator.grpc.pb.h"
+#include "synchronizer.grpc.pb.h"
 
 
 using google::protobuf::Timestamp;
@@ -79,28 +85,30 @@ using csce438::Confirmation;
 using csce438::ServerInfo;
 using csce438::GetSlaveRequset;
 
+using csce438::GetAllServersRequset;
+using csce438::GetAllServersResponse;
+using csce438::ID;
+
+using csce438::SynchService;
+using csce438::ResynchServerRequest;
+using csce438::ResynchServerResponse;
+
+
 
 struct Client {
   std::string username;
+
   bool connected = true;
-  int following_file_size = 0;
+  // int following_file_size = 0;
+
   std::vector<Client*> client_followers;
   std::vector<Client*> client_following;
   ServerReaderWriter<Message, Message>* stream = 0;
+
   bool operator==(const Client& c1) const{
     return (username == c1.username);
   }
-  void loadFollowerAndFollowingFromFile();
-  void writeFollowerAndFollowingtoFile();
 };
-
-void Client::loadFollowerAndFollowingFromFile(){
-  
-}
-
-void Client::writeFollowerAndFollowingtoFile(){
-
-}
 
 //Vector that stores every client that has been created
 std::vector<Client> client_db;
@@ -119,13 +127,13 @@ public:
     std::string timelineFile = "TIMELINE_"+clusterID+"_"+serverID+"_"+username+".txt";
     return timelineFile;
   }
-  std::string getFollowerFileName(std::string username){
-    std::string timelineFile = "FOLLOWER_"+clusterID+"_"+serverID+"_"+username+".txt";
+  std::string getFollowFileName(){
+    std::string timelineFile = "FOLLOWER_"+clusterID+"_"+serverID+".txt";
     return timelineFile;
   }
-  std::string getFollowingFileName(std::string username){
-    std::string timelineFile = "FOLLOWING_"+clusterID+"_"+serverID+"_"+username+".txt";
-    return timelineFile;
+  std::string getAllUserFileName(){
+    std::string file = "USER_"+clusterID+"_"+serverID+".txt";
+    return file;
   }
 
   std::shared_ptr<SNSService::Stub>  get_slave_stub(){
@@ -156,9 +164,90 @@ public:
     return slave_stub_;
   }
 
+  void load_alluser(){
+    std::ifstream file(
+      getAllUserFileName()
+    );
+
+    if (!file.is_open()) {
+        throw std::runtime_error("Unable to open file: " + getAllUserFileName());
+    }
+
+    std::vector<std::string> elements;
+    std::string line;
+
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string element;
+        if (iss >> element) {
+          elements.push_back(element);
+          
+        }
+    }
+
+    client_db.clear();
+    for(int i=elements.size()-1;i>=0;i--){
+      Client *user=new Client();
+      user->username = elements[i];
+
+      client_db.push_back(*user);
+    }
+  }
+
+  void loadFollowerAndFollowingFromFile() {
+    // std::unique_lock<std::mutex> lock(mu);
+    std::ifstream file(getFollowFileName());
+    std::string userID1, userID2;
+
+    // 使用 unordered_map 来快速查找客户端
+    std::unordered_map<std::string, Client*> clientMap;
+    for (auto& client : client_db) {
+        clientMap[client.username] = &client;
+    }
+
+    while (file >> userID1 >> userID2) {
+        // 确保两个用户都在数据库中
+        if (clientMap.find(userID1) != clientMap.end() && clientMap.find(userID2) != clientMap.end()) {
+            Client* follower = clientMap[userID1];
+            Client* following = clientMap[userID2];
+
+            // 更新关注和被关注的向量
+            follower->client_following.push_back(following);
+            following->client_followers.push_back(follower);
+        }
+    }
+
+    file.close();
+  }
+
+  void writeFollowerAndFollowingToFile() {
+    std::ofstream file(getFollowFileName());
+
+    // 使用一个 set 来记录已经写入的关系，防止重复
+    std::unordered_set<std::string> writtenRelations;
+
+    for (const auto& client : client_db) {
+        for (const auto* following : client.client_following) {
+            std::string relation = client.username + " " + following->username;
+
+            // 检查这个关系是否已经被写入
+            if (writtenRelations.find(relation) == writtenRelations.end()) {
+                file << relation << std::endl;
+                writtenRelations.insert(relation);
+            }
+        }
+    }
+
+    file.close();
+  }
+
   Status List(ServerContext* context, const Request* request, ListReply* list_reply) override {
     // By Hanzhong Liu
-    std::unique_lock<std::mutex> lock(mu);
+    std::cout<<"LIST"<<std::endl;
+    load_alluser();
+    loadFollowerAndFollowingFromFile();
+
+    // std::unique_lock<std::mutex> lock(mu);
 
     // add all username from client_db to list_reply
     for(int i=0;i<client_db.size();i++){
@@ -166,7 +255,7 @@ public:
     }
 
     // add all user's followers from client_db to list_reply
-     for(int i=0;i<client_db.size();i++){
+    for(int i=0;i<client_db.size();i++){
       if(client_db[i].username != request->username()) continue;
       for(int j=0;j<client_db[i].client_followers.size();j++){
         list_reply->add_followers(client_db[i].client_followers[j]->username);
@@ -178,6 +267,10 @@ public:
 
   Status Follow(ServerContext* context, const Request* request, Reply* reply) override {
     // By Hanzhong Liu
+
+    load_alluser();
+    loadFollowerAndFollowingFromFile();
+
     std::unique_lock<std::mutex> lock(mu);
 
     std::cout<<"Follow: "<<request->username()<<" -> "<<request->arguments()[0]<<std::endl;
@@ -186,7 +279,7 @@ public:
       return Status::OK; 
     }
 
-    // scarch for user and username2
+    //scarch for user and username2
     Client *user,*target;
     for(int i=0;i<client_db.size();i++){
       if(client_db[i].username == request->username()){
@@ -217,10 +310,14 @@ public:
       }
     }
 
-    // successful
-    // bulid relationship
+    //successful
+    //bulid relationship
     user->client_following.insert(user->client_following.begin(),target);
     target->client_followers.insert(target->client_followers.begin(),user);
+
+    
+    // Write relationships back to file
+    writeFollowerAndFollowingToFile();
 
     // forward to slave
     follow_to_slave(request);
@@ -317,10 +414,10 @@ public:
 
     for(int i=0;i<client_db.size();i++){
       // re-login
-      if(client_db[i].username == request->username() && client_db[i].connected==true){
-        reply->set_msg("Deny");
-        return Status::OK;
-      }
+      // if(client_db[i].username == request->username() && client_db[i].connected==true){
+      //   reply->set_msg("Deny");
+      //   return Status::OK;
+      // }
       // login back
       if(client_db[i].username == request->username() && client_db[i].connected==false){
         client_db[i].connected==true;
@@ -348,12 +445,37 @@ public:
       timeline_file.close();
     }
   
+    // save username in file
+    std::string filename = getAllUserFileName();
+    append_file(request->username(),filename);
+
     // forward to slave
     login_to_slave(request);
 
-
     reply->set_msg("OK");
     return Status::OK;
+  }
+
+  void append_file(std::string str,std::string filename){
+          // open follower's timeline file
+          std::ifstream file(filename);
+
+          std::vector<std::string> lines;
+          std::string line;
+          while (std::getline(file, line)) {
+              lines.push_back(line);
+          }
+          file.close();
+
+          // Insert data from the header
+          lines.insert(lines.begin(), str);
+
+          // write lines back
+          std::ofstream timeline_file_stream(filename);
+          for (const std::string& modified_line : lines) {
+              timeline_file_stream << modified_line << std::endl;
+          }
+          timeline_file_stream.close();
   }
 
   void login_to_slave(const Request* request){
@@ -444,7 +566,7 @@ public:
   }
 
   void publish_to_follower(std::string record,ServerReaderWriter<Message, Message>* stream,Message m){
-    // user has not enter timeline
+    //user has not enter timeline
     if(stream==nullptr){
       std::cout<<"NULL! can't send to follower"<<"\n";
       return;
@@ -496,13 +618,11 @@ public:
         for(int j=0;j<client_db[i].client_followers.size();j++){
           
           // publish msg to follower
-          if(client_db[i].client_followers[j]->username != client_db[i].username){ // can't send msg to it self
-            std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg"<<"\n";
-
-            publish_to_follower(record,client_db[i].client_followers[j]->stream,m);
-
-            std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg finish"<<"\n";
-          }
+          // if(client_db[i].client_followers[j]->username != client_db[i].username){ // can't send msg to it self
+          //   std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg"<<"\n";
+          //   publish_to_follower(record,client_db[i].client_followers[j]->stream,m);
+          //   std::cout<<client_db[i].client_followers[j]->username<<" <<<< msg finish"<<"\n";
+          // }
 
           /* 
             write to user's time line
@@ -510,8 +630,13 @@ public:
           */
           write_timeline_file(
             record,
-            client_db[i].client_followers[j]->username
+            m.username()
           );
+
+          // write_timeline_file(
+          //   record,
+          //   client_db[i].client_followers[j]->username
+          // );
         }
 
         //lient_db[i].client_followers.pop_back();
@@ -600,6 +725,35 @@ void RunServer(
 
   ClientContext *context = new ClientContext();  
   Confirmation *reply=new Confirmation();
+
+  stub->Exist(context,*info,reply);
+  if(reply->status()){
+    // restart, need resync
+    std::cout<<"Restart, begin ReSync"<<std::endl;
+
+    // get syncer's info
+    context = new ClientContext(); 
+    ID id;
+    id.set_id(stoi(clusterID));
+    ServerInfo sync;
+    stub->GetSynchronizer(context,id,&sync);
+    // connect to syncer
+
+    std::string cinfo(sync.hostname() + ":" + sync.port());
+    grpc::ChannelArguments args;
+    std::shared_ptr<Channel> syncchannel = grpc::CreateCustomChannel(cinfo, grpc::InsecureChannelCredentials(), args);
+    std::shared_ptr<SynchService::Stub> stub_sync = SynchService::NewStub(syncchannel);
+
+    // call resync
+    context = new ClientContext(); 
+    ResynchServerRequest req;
+    req.set_serverid(stoi(serverID));
+
+    ResynchServerResponse r;
+    stub_sync->ResynchServer(context,req,&r);
+  }
+
+  context = new ClientContext(); 
   stub->Create(context,*info,reply);
 
   std::thread hb([stub,serverID,clusterID]{
@@ -608,8 +762,6 @@ void RunServer(
       Heartbeat(stub,&sid,&cid);
   });
 	hb.detach();
-
-
 
   ServerBuilder builder;
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
