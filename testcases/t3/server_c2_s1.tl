@@ -1,0 +1,76 @@
+INTER_RUN 1
+./tsd -c 2 -s 1 -h localhost -k 9000 -p 20000
+
+NULL 2
+
+NULL 3
+
+NULL 4
+
+NULL 5
+
+NULL 6
+
+NULL 7
+
+NULL 8
+
+NULL 9
+
+NULL 10
+
+NULL 11
+
+NULL 12
+
+KILL 13
+
+SLEEP 14
+15
+
+NULL 15
+
+SLEEP 16
+15
+
+NULL 17
+
+NULL 18
+
+SLEEP 19
+30
+
+NULL 20
+
+NULL 21
+
+SLEEP 22
+15
+
+NULL 23
+
+SLEEP 24
+15
+
+NULL 25
+
+SLEEP 26
+15
+
+NULL 27
+
+SLEEP 28
+15
+
+INTER_RUN 29
+./tsd -c 2 -s 1 -h localhost -k 9000 -p 20000
+
+SLEEP 30
+15
+
+NULL 31
+
+NULL 32
+
+SLEEP 33
+10000

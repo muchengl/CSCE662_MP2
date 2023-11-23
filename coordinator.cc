@@ -43,6 +43,7 @@ std::time_t getTimeNow(){
 
 struct zNode{
     int serverID;
+    int clusterID;
     std::string hostname;
     std::string port;
     std::string type; // down | alive
@@ -234,6 +235,8 @@ class CoordServiceImpl final : public CoordService::Service {
     node.hostname=serverinfo->hostname();
     node.last_heartbeat=getTimeNow();
     node.serverID=serverinfo->serverid();
+    node.clusterID=serverinfo->clusterid();
+
     node.port=serverinfo->port();
     node.type="alive";
 
@@ -483,7 +486,7 @@ void checkHeartbeat(){
       for(auto& s : servers){
         if(s->isSynchronizer) continue;
         if(difftime(getTimeNow(),s->last_heartbeat)>10){
-          std::cout<<"check "<<s->serverID<<" is down"<<std::endl;
+          std::cout<<"check "<<s->clusterID<<":"<<s->serverID<<" is down"<<std::endl;
           s->missed_heartbeat = true;
           s->type="down";
           
@@ -499,6 +502,6 @@ void checkHeartbeat(){
       
       sleep(1);
     }
-}
+} 
 
 

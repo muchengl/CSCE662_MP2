@@ -92,6 +92,9 @@ std::string getAllUserFileName(std::string clusterID,std::string serverID);
 std::string getFollowFileName(std::string clusterID,std::string serverID);
 std::string getTimelineFileName(std::string clusterID,std::string serverID,std::string uid);
 
+int lockFile(const std::string& filePath);
+int unlockFile(const std::string& filePath);
+
 class SynchServiceImpl final : public SynchService::Service {
   public:
     int SynchID;
@@ -461,6 +464,21 @@ void sync_follow(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
   std::string masterf = getFollowFileName(std::to_string(synchID),"1");
   std::string slavef = getFollowFileName(std::to_string(synchID),"2");
 
+   // Get lock
+    std::cout<<"       >TRY GET LOCK: "<<masterf<<" "<<slavef<<std::endl;
+    while(true){
+      std::cout<<"       >TRY GET LOCK: "<<masterf<<std::endl;
+      int k=lockFile(masterf);
+      if(k==0) break;
+    }
+    while(true){
+       std::cout<<"       >TRY GET LOCK: "<<slavef<<std::endl;
+      int k=lockFile(slavef);
+      if(k==0) break;
+    }
+    std::cout<<"       >GET LOCK: "<<masterf<<" "<<slavef<<std::endl;
+
+
   // follow relationships in this cluster
   std::vector<std::string> masterR = get_lines_from_file(
     masterf
@@ -497,6 +515,9 @@ void sync_follow(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
     stub->GetFL(&context,req,&reponse);
 
     aggregateRelations(synchID,reponse,aggregatedRelations);
+
+    unlockFile(masterf);
+    unlockFile(slavef);
   }
 
 
@@ -545,7 +566,7 @@ struct TimelineEntry {
     bool operator<(const TimelineEntry& other) const {
         if(timestamp == other.timestamp){
           if(text == other.text) return 0;
-          return 1;
+          return text > other.text;
         }
         return timestamp > other.timestamp;
     }
@@ -559,7 +580,7 @@ TimelineEntry parseTimelineEntry(const std::string& entryStr) {
 }
 
 int lockFile(const std::string& filePath) {
-    int fd = open(filePath.c_str(), O_RDWR);
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
     if (fd == -1) {
         return -1;  // 打开文件失败
     }
@@ -581,7 +602,7 @@ int lockFile(const std::string& filePath) {
 }
 
 int unlockFile(const std::string& filePath) {
-    int fd = open(filePath.c_str(), O_RDWR);
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
     if (fd == -1) {
         return -1;  // 打开文件失败
     }

@@ -3,6 +3,14 @@ import sys
 import time
 import os
 import signal
+import glob
+
+output_dir = [
+    '',
+    './testcases/t1/output',
+    './testcases/t2/output',
+    './testcases/t3/output',
+]
 
 file_list_t1 = [
     ['testcases/t1/coordinator.tl','./testcases/t1/output/coordinator.output'],
@@ -20,6 +28,19 @@ file_list_t2 = [
     ['testcases/t2/user1.tl','./testcases/t2/output/user1.output'],
     ['testcases/t2/user2.tl','./testcases/t2/output/user2.output'],
     ['testcases/t2/user3.tl','./testcases/t2/output/user3.output'],
+]
+
+file_list_t3 = [
+    ['testcases/t3/coordinator.tl',output_dir[3]+'/coordinator.output'],
+    ['testcases/t3/server_c1.tl',output_dir[3]+'/server_c1.output'],
+    ['testcases/t3/server_c2_s1.tl',output_dir[3]+'/server_c2_s1.output'],
+    ['testcases/t3/server_c2_s2.tl',output_dir[3]+'/server_c2_s2.output'],
+    ['testcases/t3/server_c3.tl',output_dir[3]+'/server_c3.output'],
+    ['testcases/t3/sync.tl',output_dir[3]+'/sync.output'],
+    ['testcases/t3/user1.tl',output_dir[3]+'/user1.output'],
+    ['testcases/t3/user2.tl',output_dir[3]+'/user2.output'],
+    ['testcases/t3/user3.tl',output_dir[3]+'/user3.output'],
+    ['testcases/t3/user5.tl',output_dir[3]+'/user5.output'],
 ]
 
 
@@ -48,7 +69,7 @@ def run_section(idx,commands,processes,output):
         for command in commands[1:]:
             print("RUN : ",command)
             sections = command.strip().split(' ')
-            with open(output, 'w+') as output_file:
+            with open(output, 'a+') as output_file:
                 subprocess.Popen(sections, stdin=subprocess.PIPE, stdout=output_file, stderr=output_file)
                 time.sleep(1)
 
@@ -56,7 +77,7 @@ def run_section(idx,commands,processes,output):
         for command in commands[1:]:
             print("RUN : ",command)
             sections = command.strip().split(' ')
-            with open(output, 'w+') as output_file:
+            with open(output, 'a+') as output_file:
                 p = subprocess.Popen(sections, stdin=subprocess.PIPE,stdout=output_file, stderr=output_file,bufsize=0,universal_newlines=True)
                 processes[idx] = p
                 time.sleep(1)
@@ -74,13 +95,14 @@ def run_section(idx,commands,processes,output):
             time.sleep(0.5)
 
     elif commands[0].startswith("KILL") :
+        print("KILL")
         proc = processes[idx]
 
         proc.stdin.flush()
 
         proc.terminate()
         proc.wait()
-        os.killpg(proc.pid, signal.SIGTERM) 
+        # os.killpg(proc.pid, signal.SIGTERM) 
 
 
 def run_test(filelist):
@@ -91,25 +113,42 @@ def run_test(filelist):
 
     for i in range(max_sections_length):
         idx = 0
+        print("====================== ",i," ========================")
         for file_sections in all_files_sections:
             if i < len(file_sections):
-                print("-------")
+                print("-----------")
                 sections = file_sections[i].strip().split('\n')
                 run_section(idx,sections,processes,filelist[idx][1])
 
             idx += 1
+        print("===================================================\n")
 
+
+def empty_dir(dir):
+    files = glob.glob(os.path.join(dir, '*'))
+
+    for file in files:
+        try:
+            os.remove(file)
+        except OSError as e:
+            print(f"Error: {e.filename} - {e.strerror}")
 
 if __name__ == "__main__":
     testcase = first_argument = sys.argv[1]
 
-
     subprocess.Popen(['rm *.txt'],shell=True)   
     time.sleep(1)
-
+    
     if testcase == 't1' :
+        empty_dir(output_dir[1])
         run_test(file_list_t1)
+
     if testcase == 't2' :
+        empty_dir(output_dir[2])
         run_test(file_list_t2)
+
+    if testcase == 't3' :
+        empty_dir(output_dir[3])
+        run_test(file_list_t3)
     
 

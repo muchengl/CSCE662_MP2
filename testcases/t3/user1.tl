@@ -1,0 +1,80 @@
+SLEEP 1
+15
+
+INTER_RUN 2
+./tsc -h localhost -k 9000 -u 1
+
+SLEEP 3
+15
+
+SEND 4
+list
+
+SEND 5
+follow 2
+follow 3
+
+SLEEP 6
+15
+
+SEND 7
+list
+
+SEND 8
+timeline
+p11
+p12
+
+NULL 9
+
+NULL 10
+
+NULL 11
+
+NULL 12
+
+KILL 13
+
+NULL 14
+
+INTER_RUN 15
+./tsc -h localhost -k 9000 -u 1
+
+NULL 16
+
+NULL 17
+
+SEND 18
+follow 5
+
+NULL 19
+
+SEND 20
+list
+
+NULL 21
+
+NULL 22
+
+NULL 23
+
+NULL 24
+
+NULL 25
+
+NULL 26
+
+SEND 27
+timeline
+p13
+p14
+
+NULL 28
+
+NULL 29
+
+NULL 30
+
+NULL 31
+
+NULL 32

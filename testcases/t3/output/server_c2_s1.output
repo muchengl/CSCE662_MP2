@@ -1,0 +1,232 @@
+clusterID:2 serverID:1
+Server listening on 0.0.0.0:20000
+Login:2
+Create file
+My slave is: 2, Host: 127.0.0.1, Port: 20001
+LIST
+Can't find user: 3, new user
+Can't find user: 1, new user
+try get lock: FOLLOWER_2_1.txt
+try get lock: FOLLOWER_2_1.txt
+Follow: 2 -> 1
+writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_1.txt
+try get lock: FOLLOWER_2_1.txt
+My slave is: 2, Host: 127.0.0.1, Port: 20001
+try get lock: FOLLOWER_2_1.txt
+Follow: 2 -> 3
+writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_1.txt
+try get lock: FOLLOWER_2_1.txt
+My slave is: 2, Host: 127.0.0.1, Port: 20001
+LIST
+try get lock: FOLLOWER_2_1.txt
+try get lock: FOLLOWER_2_1.txt
+USER: 2 JOIN TIMELINE!
+Monitor File Change: TIMELINE_2_1_2.txt
+INFO: 1 p12 2023-11-23T22:27:00Z
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+Timestamp: seconds: 1700778420
+
+INFO: 1 p11 2023-11-23T22:26:59Z
+Timestamp: seconds: 1700778419
+
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+My slave is: 2, Host: 127.0.0.1, Port: 20001
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+My slave is: 2, Host: 127.0.0.1, Port: 20001
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+New line added: 2 p22 2023-11-23T22:27:16Z
+2 send msg,2
+New line added: 2 p22 2023-11-23T22:27:16Z
+2 send msg,2
+New line added: 2 p21 2023-11-23T22:27:16Z
+2 send msg,2
+New line added: 2 p21 2023-11-23T22:27:16Z
+2 send msg,2
+New line added: 1 p12 2023-11-23T22:27:00Z
+1 send msg,2
+Timestamp: seconds: 1700778420
+
+New line added: 1 p11 2023-11-23T22:26:59Z
+1 send msg,2
+Timestamp: seconds: 1700778419
+
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+New line added: 3 p32 2023-11-23T22:27:33Z
+3 send msg,2
+Timestamp: seconds: 1700778453
+
+New line added: 3 p31 2023-11-23T22:27:32Z
+3 send msg,2
+Timestamp: seconds: 1700778452
+
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_1_2.txt
+GET lock,TIMELINE_2_1_2.txt
+clusterID:2 serverID:1
+Restart, begin ReSync
+Server listening on 0.0.0.0:20000
+Can't find user: 5, new user
+Can't find user: 3, new user
+Can't find user: 2, new user
+Can't find user: 1, new user
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+I am slave
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+I am slave
+Login:5
+I am slave
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+I am slave
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+I am slave
+try get lock: FOLLOWER_2_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_2_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_2_1_5.txt
+I am slave

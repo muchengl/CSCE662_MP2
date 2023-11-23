@@ -106,6 +106,8 @@ struct Client {
   bool connected = true;
   // int following_file_size = 0;
 
+  int idx; // used to know user v
+
   std::vector<Client*> client_followers;
   std::vector<Client*> client_following;
   ServerReaderWriter<Message, Message>* stream = 0;
@@ -119,8 +121,18 @@ struct Client {
 std::vector<Client> client_db;
 std::mutex mu;
 
+int getUserVersion(std::string uname){
+  for(Client c:client_db){
+    if(c.username == uname){
+      return c.idx;
+    }
+  }
+  return -1;
+}
+
 int lockFile(const std::string& filePath) {
-    int fd = open(filePath.c_str(), O_RDWR);
+  std::cout<<"try get lock: "<<filePath<<std::endl;
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
     if (fd == -1) {
         return -1;  // 打开文件失败
     }
@@ -142,7 +154,7 @@ int lockFile(const std::string& filePath) {
 }
 
 int unlockFile(const std::string& filePath) {
-    int fd = open(filePath.c_str(), O_RDWR);
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
     if (fd == -1) {
         return -1;  // 打开文件失败
     }
@@ -267,13 +279,19 @@ void send_msg(std::string line,ServerReaderWriter<Message, Message>* stream,std:
           stream->Write(m);   
 }
 
-void monitorFile(std::string filepath,ServerReaderWriter<Message, Message>* stream,std::string uname){
+void monitorFile(std::string filepath,ServerReaderWriter<Message, Message>* stream,std::string uname,int uv){
 
   std::vector<std::string> init = readFileLines(filepath);
   std::vector<std::string>* oldLines  = &init;
 
     while (true) {
       std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      // check user's version
+      if(getUserVersion(uname)!=uv){
+        break;
+      }
+
+
         std::vector<std::string> changes = detectFileChanges(filepath,oldLines);
         if (!changes.empty()) {
             for (const auto& line : changes) {
@@ -282,6 +300,8 @@ void monitorFile(std::string filepath,ServerReaderWriter<Message, Message>* stre
             }
         }
     }
+
+    std::cout<<"User: "<<uname<<"re-login, "<<"finish monitorFile"<<std::endl;
 }
 
 class SNSServiceImpl final : public SNSService::Service {
@@ -371,6 +391,8 @@ public:
 
       if(find) continue;
 
+      std::cout<<"Can't find user: "<<elements[i]<<", new user"<<std::endl;
+
       Client *user=new Client();
       user->username = elements[i];
       client_db.push_back(*user);
@@ -392,6 +414,13 @@ public:
   void loadFollowerAndFollowingFromFile() {
     // std::unique_lock<std::mutex> lock(mu);
     std::ifstream file(getFollowFileName());
+
+    while(true){
+      int k=lockFile(getFollowFileName());
+      if(k==0) break;
+    }
+
+
     std::string userID1, userID2;
 
     // 使用 unordered_map 来快速查找客户端
@@ -415,10 +444,17 @@ public:
     }
 
     file.close();
+    unlockFile(getFollowFileName());
   }
 
   void writeFollowerAndFollowingToFile() {
     std::ofstream file(getFollowFileName());
+
+    while(true){
+      std::cout<<"writeFollowerAndFollowingToFile() Try getting lock: "<<getFollowFileName()<<std::endl;
+      int k=lockFile(getFollowFileName());
+      if(k==0) break;
+    }
 
     // 使用一个 set 来记录已经写入的关系，防止重复
     std::unordered_set<std::string> writtenRelations;
@@ -436,6 +472,7 @@ public:
     }
 
     file.close();
+    unlockFile(getFollowFileName());
   }
 
   Status List(ServerContext* context, const Request* request, ListReply* list_reply) override {
@@ -468,7 +505,8 @@ public:
     load_alluser();
     loadFollowerAndFollowingFromFile();
 
-    std::unique_lock<std::mutex> lock(mu);
+    // std::unique_lock<std::mutex> lock(mu);
+    // mu.lock();
 
     std::cout<<"Follow: "<<request->username()<<" -> "<<request->arguments()[0]<<std::endl;
     if(request->username() == request->arguments()[0]){
@@ -606,7 +644,7 @@ public:
   Status Login(ServerContext* context, const Request* request, Reply* reply) override {
     // By Hanzhong Liu
     load_alluser();
-    std::unique_lock<std::mutex> lock(mu);
+    // std::unique_lock<std::mutex> lock(mu);
 
     std::cout<<"Login:"<<request->username()<<std::endl;
 
@@ -615,19 +653,23 @@ public:
       // re-login
       if(client_db[i].username == request->username() && client_db[i].connected==true){
         exist =true;
+        client_db[i].stream = nullptr;
+        client_db[i].idx++;
       }
       // login back
-      if(client_db[i].username == request->username() && client_db[i].connected==false){
+      else if(client_db[i].username == request->username() && client_db[i].connected==false){
         client_db[i].connected==true;
+        client_db[i].stream = nullptr;
         reply->set_msg("OK");
         exist =true;
-        return Status::OK;
+        client_db[i].idx++;
+        //return Status::OK;
       }
     }
 
     // first time login
     if(!exist){
-       Client *newClient = new Client();
+      Client *newClient = new Client();
       newClient->username = request->username();
       client_db.insert(client_db.begin(),*newClient);
     }
@@ -723,9 +765,11 @@ public:
           }
 
           // built new msg
-          Message m;
-          m.set_username(words[0]);
-          m.set_msg(words[1]);
+          Message msg;
+          msg.set_username(words[0]);
+          msg.set_msg(words[1]);
+
+          if(m.username() == msg.username()) continue;
 
           google::protobuf::Timestamp *timestamp = new google::protobuf::Timestamp();
           if (google::protobuf::util::TimeUtil::FromString(words[2], timestamp)) {
@@ -734,10 +778,10 @@ public:
               std::cerr << "FAIL!" << std::endl;
           }
 
-          m.set_allocated_timestamp(timestamp);
+          msg.set_allocated_timestamp(timestamp);
 
           // send msg to user
-          stream->Write(m);          
+          stream->Write(msg);          
         } 
   }
 
@@ -801,7 +845,8 @@ public:
       load_alluser();
       loadFollowerAndFollowingFromFile();
 
-      std::unique_lock<std::mutex> lock(mu);
+      // std::unique_lock<std::mutex> lock(mu);
+      // mu.lock();
       //std::cout<< "TIMELINE INFO: "<<m.username()<<" "<<m.msg()<<std::endl;
       // new login
       if(m.msg() == "join_timeline"){
@@ -815,9 +860,12 @@ public:
 
         std::string filename = getTimelineFileName(m.username());
         std::cout<<"Monitor File Change: "<<filename<<std::endl;
+
         std::string uname = m.username();
-        std::thread wirte([filename,stream,uname]{
-          monitorFile(filename,stream,uname);
+        int uv=getUserVersion(uname);
+
+        std::thread wirte([filename,stream,uname,uv]{
+          monitorFile(filename,stream,uname,uv);
         });
         wirte.detach();
 
@@ -828,7 +876,7 @@ public:
 
         // timeline_to_slave(&m);
        
-        lock.unlock();
+        // lock.unlock();
         continue;
       }
 
@@ -880,7 +928,7 @@ public:
       }
 
       timeline_to_slave(&m);
-      lock.unlock();
+      // lock.unlock();
     }
 
 
