@@ -13,7 +13,9 @@ file_list_t1 = [
 
 file_list_t2 = [
     ['testcases/t2/coordinator.tl','./testcases/t2/output/coordinator.output'],
-    ['testcases/t2/server.tl','./testcases/t2/output/server.output'],
+    ['testcases/t2/server_c1.tl','./testcases/t2/output/server_c1.output'],
+    ['testcases/t2/server_c2.tl','./testcases/t2/output/server_c2.output'],
+    ['testcases/t2/server_c3.tl','./testcases/t2/output/server_c3.output'],
     ['testcases/t2/sync.tl','./testcases/t2/output/sync.output'],
     ['testcases/t2/user1.tl','./testcases/t2/output/user1.output'],
     ['testcases/t2/user2.tl','./testcases/t2/output/user2.output'],
@@ -28,7 +30,6 @@ def parse_files(filelist):
         with open(filepath[0], 'r') as file:
             content = file.read()
 
-            # 以连续的\n分割sections
             sections = content.strip().split('\n\n')
             all_files_sections.append(sections)
 

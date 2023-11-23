@@ -640,7 +640,6 @@ void processAndWriteTimeline(
       int k=lockFile(fileNameSlave);
       if(k==0) break;
     }
-
     std::cout<<"       >GET LOCK: "<<fileName<<" "<<fileNameSlave<<std::endl;
     
     std::ifstream fileIn(fileName);

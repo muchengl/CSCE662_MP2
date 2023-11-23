@@ -1,0 +1,153 @@
+clusterID:3 serverID:2
+Server listening on 0.0.0.0:30001
+Login:3
+Create file
+I am slave
+Follow: 3 -> 1
+I am slave
+Follow: 3 -> 2
+I am slave
+WRITE FILE =============
+WRITE FILE =============
+I am slave
+WRITE FILE =============
+WRITE FILE =============
+I am slave
+IN TIMELINE!
+Monitor File Change: TIMELINE_3_1_3.txt
+INFO: 2 p21 2023-11-23T04:02:07Z
+Timestamp: seconds: 1700712127
+
+INFO: 2 p22 2023-11-23T04:02:07Z
+Timestamp: seconds: 1700712127
+
+INFO: 1 p12 2023-11-23T04:01:51Z
+Timestamp: seconds: 1700712111
+
+INFO: 1 p11 2023-11-23T04:01:50Z
+Timestamp: seconds: 1700712110
+
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+WRITE FILE =============
+WRITE FILE =============
+My slave is: 2, Host: 127.0.0.1, Port: 30001
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+New line added: 3 p31 2023-11-23T04:02:23Z
+3 send msg,3
+New line added: 3 p31 2023-11-23T04:02:23Z
+3 send msg,3
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+WRITE FILE =============
+WRITE FILE =============
+My slave is: 2, Host: 127.0.0.1, Port: 30001
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+New line added: 3 p32 2023-11-23T04:02:24Z
+3 send msg,3
+New line added: 3 p32 2023-11-23T04:02:24Z
+3 send msg,3
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt
+TRY GET LOCK
+GET lock,TIMELINE_3_1_3.txt

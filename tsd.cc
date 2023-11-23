@@ -165,6 +165,7 @@ int unlockFile(const std::string& filePath) {
 
 std::vector<std::string> readFileLines(const std::string& filePath) {
     while(true){
+      std::cout<<"TRY GET LOCK\n";
       int k = lockFile(filePath);
       if(k==0) break;
     }
@@ -197,34 +198,41 @@ std::vector<std::string> compareFiles(const std::vector<std::string>& oldLines, 
 }
 
 
-std::vector<std::string> detectFileChanges(const std::string& filePath) {
-    int inotifyFd = inotify_init();
-    if (inotifyFd < 0) {
-        std::cerr << "Inotify initialization failed" << std::endl;
-        return {};
-    }
+std::vector<std::string> detectFileChanges(
+  const std::string& filePath,
+  std::vector<std::string>* oldLines
+  ) {
+    // int inotifyFd = inotify_init();
+    // if (inotifyFd < 0) {
+    //     std::cerr << "Inotify initialization failed" << std::endl;
+    //     return {};
+    // }
 
-   int watchDescriptor = inotify_add_watch(inotifyFd, filePath.c_str(), IN_MODIFY);
+   //int watchDescriptor = inotify_add_watch(inotifyFd, filePath.c_str(), IN_MODIFY);
     
-    std::vector<std::string> oldLines = readFileLines(filePath);
+    //std::vector<std::string> oldLines = readFileLines(filePath);
+
     std::vector<std::string> addedLines;
 
-    char buffer[1024];
-    int length = read(inotifyFd, buffer, 1024);
+    // char buffer[1024];
+    // int length = read(inotifyFd, buffer, 1024);
 
-    for (int i = 0; i < length;) {
-        struct inotify_event* event = (struct inotify_event*)&buffer[i];
-        if (event->mask & IN_MODIFY) {
-            std::cout<<"IN_MODIFY"<<std::endl;
+    // for (int i = 0; i < length;) {
+    //     struct inotify_event* event = (struct inotify_event*)&buffer[i];
+    //     if (event->mask & IN_MODIFY) {
+    //         std::cout<<"IN_MODIFY"<<std::endl;
           
             std::vector<std::string> newLines = readFileLines(filePath);
-            addedLines = compareFiles(oldLines, newLines);
-            oldLines = newLines;
-        }
-        i += sizeof(struct inotify_event) + event->len;
-    }
+            addedLines = compareFiles(*oldLines, newLines);
 
-    close(inotifyFd);
+            oldLines->clear();
+            oldLines->resize(newLines.size());
+            std::copy(newLines.begin(), newLines.end(), oldLines->begin());
+    //     }
+    //     i += sizeof(struct inotify_event) + event->len;
+    // }
+
+    // close(inotifyFd);
     return addedLines;
 }
 
@@ -260,15 +268,19 @@ void send_msg(std::string line,ServerReaderWriter<Message, Message>* stream,std:
 }
 
 void monitorFile(std::string filepath,ServerReaderWriter<Message, Message>* stream,std::string uname){
+
+  std::vector<std::string> init = readFileLines(filepath);
+  std::vector<std::string>* oldLines  = &init;
+
     while (true) {
-        std::vector<std::string> changes = detectFileChanges(filepath);
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::vector<std::string> changes = detectFileChanges(filepath,oldLines);
         if (!changes.empty()) {
             for (const auto& line : changes) {
                 std::cout << "New line added: " << line << std::endl;
                 send_msg(line,stream,uname);
             }
         }
-        // std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 }
 

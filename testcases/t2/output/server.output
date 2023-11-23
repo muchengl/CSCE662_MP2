@@ -1618,11 +1618,12 @@ I am slave
 WRITE FILE =============
 WRITE FILE =============
 I am slave
-ILE =============
-GET lock,TIMELINE_3_1_3.txt
-IN_MODIFY
-GET lock,TIMELINE_3_1_3.txt
-My slave is: 2, Host: 127.0.0.1, Port: 30001
+Login:1
+Create file
+My slave is: 1, Host: 127.0.0.1, Port: 10000
+Login:1
+My slave is: 1, Host: 127.0.0.1, Port: 10000
+ort: 30001
 WRITE FILE =============
 WRITE FILE =============
 My slave is: 2, Host: 127.0.0.1, Port: 30001
