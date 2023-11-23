@@ -128,7 +128,7 @@ class CoordServiceImpl final : public CoordService::Service {
     return Status::OK;
   }
   
-  void init_serverinfo(ServerInfo* serverinfo,zNode node,int cid){
+  void init_serverinfo(ServerInfo* serverinfo,zNode &node,int cid){
     serverinfo->set_clusterid((int32_t)cid);
     serverinfo->set_serverid((int32_t)node.serverID);
     serverinfo->set_hostname(node.hostname);
@@ -146,11 +146,6 @@ class CoordServiceImpl final : public CoordService::Service {
     //std::cout<<"Got GetServer for clientID: "<<id->id()<<std::endl;
     int userID = id->id();
     int clusterID = ((userID-1)%3)+1;
-
-    // Your code here
-    
-    // 1.check master node
-    // 2.if master node not exist, return the first alive node
 
     // int userID = id->id();
     serverinfo->set_type("down");
@@ -353,13 +348,13 @@ class CoordServiceImpl final : public CoordService::Service {
       
     for(int i=0;i<cluster2.size();i++){
       ServerInfo server_info;
-      init_serverinfo(&server_info,cluster2[i],1);
+      init_serverinfo(&server_info,cluster2[i],2);
       getAllServersResponse->add_serverlist()->CopyFrom(server_info);
     }
       
     for(int i=0;i<cluster3.size();i++){
       ServerInfo server_info;
-      init_serverinfo(&server_info,cluster3[i],1);
+      init_serverinfo(&server_info,cluster3[i],3);
       getAllServersResponse->add_serverlist()->CopyFrom(server_info);
     }
       

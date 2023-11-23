@@ -19,6 +19,12 @@
 #include <google/protobuf/util/time_util.h>
 #include <grpc++/grpc++.h>
 
+#include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
 #include "synchronizer.grpc.pb.h"
 #include "coordinator.grpc.pb.h"
 
@@ -287,7 +293,7 @@ void run_synchronizer(std::string coordIP, std::string coordPort, std::string po
         //change this to 30 eventually
         sleep(5);
 
-        std::cout<<"******************* SYNC LUNCH! *******************"<<std::endl;
+        std::cout<<"\n\n******************* SYNC LUNCH! *******************"<<std::endl;
 
         std::cout<<"========= sync_all_user =============="<<std::endl;
         sync_all_user(coord_stub_,synchID);
@@ -297,6 +303,8 @@ void run_synchronizer(std::string coordIP, std::string coordPort, std::string po
 
         std::cout<<"=========== sync_timeline ============"<<std::endl;
         sync_timeline(coord_stub_,synchID);
+
+        std::cout<<"******************* FINISH! *******************\n"<<std::endl;
 	   
     }
     return;
@@ -535,7 +543,11 @@ struct TimelineEntry {
     std::string timestamp;
 
     bool operator<(const TimelineEntry& other) const {
-        return timestamp > other.timestamp; // sort by time
+        if(timestamp == other.timestamp){
+          if(text == other.text) return 0;
+          return 1;
+        }
+        return timestamp > other.timestamp;
     }
 };
 
@@ -544,6 +556,50 @@ TimelineEntry parseTimelineEntry(const std::string& entryStr) {
     TimelineEntry entry;
     iss >> entry.id >> entry.text >> entry.timestamp;
     return entry;
+}
+
+int lockFile(const std::string& filePath) {
+    int fd = open(filePath.c_str(), O_RDWR);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
+
+    struct flock fl;
+    fl.l_type = F_WRLCK;   // 设置为写锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 锁定整个文件
+    fl.l_len = 0;          // 0 表示锁定到文件末尾
+    fl.l_pid = getpid();
+
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 获取锁失败
+    }
+
+    close(fd);  // 关闭文件描述符
+    return 0;    // 锁定成功
+}
+
+int unlockFile(const std::string& filePath) {
+    int fd = open(filePath.c_str(), O_RDWR);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
+
+    struct flock fl;
+    fl.l_type = F_UNLCK;   // 设置为解锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 解锁整个文件
+    fl.l_len = 0;          // 0 表示解锁到文件末尾
+    fl.l_pid = getpid();
+
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 解锁失败
+    }
+
+    close(fd);  // 关闭文件描述符
+    return 0;    // 解锁成功
 }
 
 void processAndWriteTimeline(
@@ -573,6 +629,19 @@ void processAndWriteTimeline(
       std::to_string(slaveID),
       std::to_string(uid)
     );
+
+    // Get lock
+    std::cout<<"       >TRY GET LOCK: "<<fileName<<" "<<fileNameSlave<<std::endl;
+    while(true){
+      int k=lockFile(fileName);
+      if(k==0) break;
+    }
+    while(true){
+      int k=lockFile(fileNameSlave);
+      if(k==0) break;
+    }
+
+    std::cout<<"       >GET LOCK: "<<fileName<<" "<<fileNameSlave<<std::endl;
     
     std::ifstream fileIn(fileName);
     TimelineEntry entry;
@@ -609,6 +678,9 @@ void processAndWriteTimeline(
     } else {
         std::cerr << "Can't write file" << std::endl;
     }
+    
+
+
 
     std::cout<<"       >"<<"FLIENAME 02: "<<" : "<<fileNameSlave<<std::endl;
     std::ofstream fileOutSlave(fileNameSlave);
@@ -621,6 +693,9 @@ void processAndWriteTimeline(
     } else {
         std::cerr << "Can't write file" << std::endl;
     }
+
+    unlockFile(fileName);
+    unlockFile(fileNameSlave);
 }
 
 /*
@@ -660,6 +735,9 @@ void sync_timeline(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
     for (int following : followedUsers) {
       ServerInfo info;
       int targetClusterId = (following-1)%3+1;
+      // no need to sync in same cluster
+      // if(targetClusterId == synchID) continue;
+
       std::cout<<"  > Sync timeline from user: "<<targetClusterId<<std::endl;
 
       // find sync
@@ -672,7 +750,7 @@ void sync_timeline(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
         }
       }
 
-      std::cout<<"    > build stub with: "<<targetClusterId<<std::endl;
+      std::cout<<"    > build stub with: "<<targetClusterId<<"  "<<info.hostname()+":"+info.port()<<std::endl;
       std::shared_ptr<SynchService::Stub> stub = get_sync_stub(
         info.hostname(),
         info.port()
@@ -690,7 +768,7 @@ void sync_timeline(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
       std::vector<std::string> listEntries;
       for (int j = 0; j < reponse.lines_size(); ++j) {
         std::string line = reponse.lines(j);
-        //std::cout<<"       >"<<j<<" : "<<line<<std::endl;
+        std::cout<<"       >"<<j<<" : "<<line<<std::endl;
         listEntries.push_back(line);
       }
       std::cout<<"    > "<<"processAndWriteTimeline"<<std::endl;

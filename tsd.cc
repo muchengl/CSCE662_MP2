@@ -46,10 +46,17 @@
 #include <google/protobuf/util/time_util.h>
 #include <grpc++/grpc++.h>
 #include<glog/logging.h>
+#include <sys/inotify.h>
 
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+#include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #define log(severity, msg) LOG(severity) << msg; google::FlushLogFiles(google::severity); 
 
@@ -93,8 +100,6 @@ using csce438::SynchService;
 using csce438::ResynchServerRequest;
 using csce438::ResynchServerResponse;
 
-
-
 struct Client {
   std::string username;
 
@@ -113,6 +118,159 @@ struct Client {
 //Vector that stores every client that has been created
 std::vector<Client> client_db;
 std::mutex mu;
+
+int lockFile(const std::string& filePath) {
+    int fd = open(filePath.c_str(), O_RDWR);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
+
+    struct flock fl;
+    fl.l_type = F_WRLCK;   // 设置为写锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 锁定整个文件
+    fl.l_len = 0;          // 0 表示锁定到文件末尾
+    fl.l_pid = getpid();
+
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 获取锁失败
+    }
+
+    close(fd);  // 关闭文件描述符
+    return 0;    // 锁定成功
+}
+
+int unlockFile(const std::string& filePath) {
+    int fd = open(filePath.c_str(), O_RDWR);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
+
+    struct flock fl;
+    fl.l_type = F_UNLCK;   // 设置为解锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 解锁整个文件
+    fl.l_len = 0;          // 0 表示解锁到文件末尾
+    fl.l_pid = getpid();
+
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 解锁失败
+    }
+
+    close(fd);  // 关闭文件描述符
+    return 0;    // 解锁成功
+}
+
+std::vector<std::string> readFileLines(const std::string& filePath) {
+    while(true){
+      int k = lockFile(filePath);
+      if(k==0) break;
+    }
+    std::cout<<"GET lock,"<<filePath<<std::endl;
+
+    std::vector<std::string> lines;
+    std::string line;
+    std::ifstream file(filePath);
+
+    while (getline(file, line)) {
+        lines.push_back(line);
+    }
+
+    unlockFile(filePath);
+    return lines;
+}
+
+std::vector<std::string> compareFiles(const std::vector<std::string>& oldLines, const std::vector<std::string>& newLines) {
+    std::vector<std::string> addedLines;
+    size_t oldSize = oldLines.size();
+    size_t newSize = newLines.size();
+
+    int linenum = newSize-oldSize;
+
+    for (int i = 0; i < linenum; ++i) {
+        addedLines.push_back(newLines[i]);
+    }
+
+    return addedLines;
+}
+
+
+std::vector<std::string> detectFileChanges(const std::string& filePath) {
+    int inotifyFd = inotify_init();
+    if (inotifyFd < 0) {
+        std::cerr << "Inotify initialization failed" << std::endl;
+        return {};
+    }
+
+   int watchDescriptor = inotify_add_watch(inotifyFd, filePath.c_str(), IN_MODIFY);
+    
+    std::vector<std::string> oldLines = readFileLines(filePath);
+    std::vector<std::string> addedLines;
+
+    char buffer[1024];
+    int length = read(inotifyFd, buffer, 1024);
+
+    for (int i = 0; i < length;) {
+        struct inotify_event* event = (struct inotify_event*)&buffer[i];
+        if (event->mask & IN_MODIFY) {
+            std::cout<<"IN_MODIFY"<<std::endl;
+          
+            std::vector<std::string> newLines = readFileLines(filePath);
+            addedLines = compareFiles(oldLines, newLines);
+            oldLines = newLines;
+        }
+        i += sizeof(struct inotify_event) + event->len;
+    }
+
+    close(inotifyFd);
+    return addedLines;
+}
+
+void send_msg(std::string line,ServerReaderWriter<Message, Message>* stream,std::string uname){
+   // split record into secs
+          std::istringstream iss(line);
+          std::vector<std::string> words;
+          std::string word;
+          while (iss >> word) {
+            words.push_back(word);
+          }
+
+          // built new msg
+          Message m;
+          m.set_username(words[0]);
+          m.set_msg(words[1]);
+
+          std::cout<<m.username()<<" send msg," <<uname<<std::endl;
+
+          if(m.username() == uname) return;
+
+          google::protobuf::Timestamp *timestamp = new google::protobuf::Timestamp();
+          if (google::protobuf::util::TimeUtil::FromString(words[2], timestamp)) {
+              std::cout << "Timestamp: " << timestamp->DebugString() << std::endl;
+          } else {
+              std::cerr << "FAIL!" << std::endl;
+          }
+
+          m.set_allocated_timestamp(timestamp);
+
+          // send msg to user
+          stream->Write(m);   
+}
+
+void monitorFile(std::string filepath,ServerReaderWriter<Message, Message>* stream,std::string uname){
+    while (true) {
+        std::vector<std::string> changes = detectFileChanges(filepath);
+        if (!changes.empty()) {
+            for (const auto& line : changes) {
+                std::cout << "New line added: " << line << std::endl;
+                send_msg(line,stream,uname);
+            }
+        }
+        // std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    }
+}
 
 class SNSServiceImpl final : public SNSService::Service {
 public:
@@ -168,6 +326,11 @@ public:
     std::ifstream file(
       getAllUserFileName()
     );
+    if (!file.is_open()) {
+        std::ofstream file_create(getAllUserFileName(), std::ios::app);
+        file_create.close();
+        file.open(getAllUserFileName());
+    }
 
     if (!file.is_open()) {
         throw std::runtime_error("Unable to open file: " + getAllUserFileName());
@@ -185,12 +348,32 @@ public:
         }
     }
 
-    client_db.clear();
     for(int i=elements.size()-1;i>=0;i--){
+      bool find=false;
+      for(Client c: client_db){
+        if(c.username == elements[i]){
+          find=true;
+          break;
+        }
+      }
+
+      if(find) continue;
+
       Client *user=new Client();
       user->username = elements[i];
-
       client_db.push_back(*user);
+    }
+  }
+
+  void wirte_alluser(){
+    std::ofstream file(getAllUserFileName());
+    if (!file.is_open()) {
+        std::cerr << "Can't open" << std::endl;
+        return;
+    }
+
+    for(int i=0;i<client_db.size();i++){
+      file << client_db[i].username << std::endl;
     }
   }
 
@@ -203,6 +386,8 @@ public:
     std::unordered_map<std::string, Client*> clientMap;
     for (auto& client : client_db) {
         clientMap[client.username] = &client;
+        client.client_followers.clear();
+        client.client_following.clear();
     }
 
     while (file >> userID1 >> userID2) {
@@ -408,29 +593,33 @@ public:
   // RPC Login
   Status Login(ServerContext* context, const Request* request, Reply* reply) override {
     // By Hanzhong Liu
+    load_alluser();
     std::unique_lock<std::mutex> lock(mu);
 
     std::cout<<"Login:"<<request->username()<<std::endl;
 
+    bool exist=false;
     for(int i=0;i<client_db.size();i++){
       // re-login
-      // if(client_db[i].username == request->username() && client_db[i].connected==true){
-      //   reply->set_msg("Deny");
-      //   return Status::OK;
-      // }
+      if(client_db[i].username == request->username() && client_db[i].connected==true){
+        exist =true;
+      }
       // login back
       if(client_db[i].username == request->username() && client_db[i].connected==false){
         client_db[i].connected==true;
         reply->set_msg("OK");
+        exist =true;
         return Status::OK;
       }
     }
 
     // first time login
-    Client *newClient = new Client();
-    newClient->username = request->username();
-
-    client_db.insert(client_db.begin(),*newClient);
+    if(!exist){
+       Client *newClient = new Client();
+      newClient->username = request->username();
+      client_db.insert(client_db.begin(),*newClient);
+    }
+   
 
     // create a timeline file
     std::string timelineFile = getTimelineFileName(request->username());
@@ -446,8 +635,9 @@ public:
     }
   
     // save username in file
-    std::string filename = getAllUserFileName();
-    append_file(request->username(),filename);
+    // std::string filename = getAllUserFileName();
+    // append_file(request->username(),filename);
+    wirte_alluser();
 
     // forward to slave
     login_to_slave(request);
@@ -457,6 +647,10 @@ public:
   }
 
   void append_file(std::string str,std::string filename){
+    while(true){
+      int k = lockFile(filename);
+      if(k==0) break;
+    }
           // open follower's timeline file
           std::ifstream file(filename);
 
@@ -476,6 +670,7 @@ public:
               timeline_file_stream << modified_line << std::endl;
           }
           timeline_file_stream.close();
+      unlockFile(filename);
   }
 
   void login_to_slave(const Request* request){
@@ -534,7 +729,8 @@ public:
         } 
   }
 
-  void write_timeline_file(std::string record,std::string follower_name){
+  void write_timeline_file(std::string record,std::string name){
+    
           /* 
             write file to user's time line
             new msg will be install into the top of the fimeline file
@@ -543,8 +739,15 @@ public:
           
           // open follower's timeline file
           std::string timelineFile = getTimelineFileName(
-            follower_name
+            name
           );
+
+          while(true){
+            int k = lockFile(timelineFile);
+            if(k==0) break;
+          }
+
+
           std::ifstream timelinefile(timelineFile);
 
           std::vector<std::string> lines;
@@ -563,6 +766,8 @@ public:
               timeline_file_stream << modified_line << std::endl;
           }
           timeline_file_stream.close();
+
+          unlockFile(timelineFile);
   }
 
   void publish_to_follower(std::string record,ServerReaderWriter<Message, Message>* stream,Message m){
@@ -579,9 +784,13 @@ public:
   Status Timeline(ServerContext* context, ServerReaderWriter<Message, Message>* stream) override {
     // By Hanzhong Liu
     Message m;
+    
     while(stream->Read(&m)){
-      std::unique_lock<std::mutex> lock(mu);
+      load_alluser();
+      loadFollowerAndFollowingFromFile();
 
+      std::unique_lock<std::mutex> lock(mu);
+      //std::cout<< "TIMELINE INFO: "<<m.username()<<" "<<m.msg()<<std::endl;
       // new login
       if(m.msg() == "join_timeline"){
 
@@ -592,10 +801,20 @@ public:
            }
         }
 
+        std::string filename = getTimelineFileName(m.username());
+        std::cout<<"Monitor File Change: "<<filename<<std::endl;
+        std::string uname = m.username();
+        std::thread wirte([filename,stream,uname]{
+          monitorFile(filename,stream,uname);
+        });
+        wirte.detach();
+
         /*
           get 20 msgs and send them to user
         */ 
         send_top20msg(stream,m);
+
+        // timeline_to_slave(&m);
        
         lock.unlock();
         continue;
@@ -633,16 +852,22 @@ public:
             m.username()
           );
 
-          // write_timeline_file(
-          //   record,
-          //   client_db[i].client_followers[j]->username
-          // );
+          int c1=(stoi(m.username())-1)%3+1;
+          int c2=(stoi( client_db[i].client_followers[j]->username) - 1)%3+1;
+
+          if(c1 == c2){
+            std::cout<<"Same cluster"<<std::endl;
+            write_timeline_file(
+              record,
+              client_db[i].client_followers[j]->username
+            );
+          }
         }
 
         //lient_db[i].client_followers.pop_back();
       }
 
-      timeline_to_slave(m);
+      timeline_to_slave(&m);
       lock.unlock();
     }
 
@@ -650,14 +875,25 @@ public:
     return Status::OK;
   }
 
-  void timeline_to_slave(Message message){
+  Message MakeMessage(const std::string& username, const std::string& msg) {
+    Message m;
+    m.set_username(username);
+    m.set_msg(msg);
+    google::protobuf::Timestamp* timestamp = new google::protobuf::Timestamp();
+    timestamp->set_seconds(time(NULL));
+    timestamp->set_nanos(0);
+    m.set_allocated_timestamp(timestamp);
+    return m;
+  }
+
+  void timeline_to_slave(Message* message){
     std::shared_ptr<SNSService::Stub> slave_stub_ = get_slave_stub();
     if(!slave_stub_) return;
 
-    // 3. send req
     ClientContext *context = new ClientContext();  
     std::shared_ptr<ClientReaderWriter<Message,Message>> rw = slave_stub_->Timeline(context);
-    rw->Write(message);
+    Message m = MakeMessage(message->username(),message->msg());
+    rw->Write(m);
   }
 
 };
@@ -683,6 +919,7 @@ void Heartbeat(std::shared_ptr<CoordService::Stub> stub_,std::string *serverID,s
   }
   
 }
+
 
 void RunServer(
     std::string port_no,

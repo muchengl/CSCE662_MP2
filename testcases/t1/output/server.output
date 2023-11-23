@@ -1,0 +1,98 @@
+clusterID:1 serverID:2
+Server listening on 0.0.0.0:10001
+Login:1
+Create file
+I am slave
+Login:4
+Create file
+I am slave
+Follow: 1 -> 4
+I am slave
+Follow: 4 -> 1
+I am slave
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+I am slave
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+I am slave
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+I am slave
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+I am slave
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+I am slave
+127.0.0.1, Port: 10001
+New line added: 1 p11 2023-11-22T21:43:30Z
+1 send msg,1
+GET lock,TIMELINE_1_1_1.txt
+WRITE FILE =============
+IN_MODIFY
+Same cluster
+WRITE FILE =============
+GET lock,TIMELINE_1_1_1.txt
+New line added: 1 p12 2023-11-22T21:43:31Z
+1 send msg,1
+GET lock,TIMELINE_1_1_1.txt
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+WRITE FILE =============
+IN_MODIFY
+GET lock,TIMELINE_1_1_1.txt
+Same cluster
+WRITE FILE =============
+New line added: 1 p13 2023-11-22T21:43:31Z
+1 send msg,1
+GET lock,TIMELINE_1_1_1.txt
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+USER: 4 JOIN TIMELINE!
+Monitor File Change: TIMELINE_1_1_4.txt
+INFO: 1 p13 2023-11-22T21:43:31Z
+Timestamp: seconds: 1700689411
+
+INFO: 1 p12 2023-11-22T21:43:31Z
+Timestamp: seconds: 1700689411
+
+INFO: 1 p11 2023-11-22T21:43:30Z
+Timestamp: seconds: 1700689410
+
+GET lock,TIMELINE_1_1_4.txt
+WRITE FILE =============
+IN_MODIFY
+GET lock,TIMELINE_1_1_4.txt
+Same cluster
+WRITE FILE =============
+New line added: 4 p41 2023-11-22T21:43:32Z
+4 send msg,4
+GET lock,TIMELINE_1_1_4.txt
+IN_MODIFY
+GET lock,TIMELINE_1_1_1.txt
+New line added: 4 p41 2023-11-22T21:43:32Z
+4 send msg,1
+Timestamp: seconds: 1700689412
+
+GET lock,TIMELINE_1_1_1.txt
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+WRITE FILE =============
+IN_MODIFY
+GET lock,TIMELINE_1_1_4.txt
+Same cluster
+WRITE FILE =============
+IN_MODIFY
+GET lock,TIMELINE_1_1_1.txt
+New line added: 4 p42 2023-11-22T21:43:33Z
+4 send msg,1
+Timestamp: seconds: 1700689413
+
+GET lock,TIMELINE_1_1_1.txt
+New line added: 4 p42 2023-11-22T21:43:33Z
+4 send msg,4
+GET lock,TIMELINE_1_1_4.txt
+My slave is: 2, Host: 127.0.0.1, Port: 10001
