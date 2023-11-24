@@ -310,6 +310,7 @@ class CoordServiceImpl final : public CoordService::Service {
           serverinfo->set_serverid(cluster1[i].serverID);
           serverinfo->set_hostname(cluster1[i].hostname);
           serverinfo->set_port(cluster1[i].port);
+          serverinfo->set_type(cluster1[i].type);
           break;
         }
       }
@@ -321,6 +322,7 @@ class CoordServiceImpl final : public CoordService::Service {
           serverinfo->set_serverid(cluster2[i].serverID);
           serverinfo->set_hostname(cluster2[i].hostname);
           serverinfo->set_port(cluster2[i].port);
+          serverinfo->set_type(cluster2[i].type);
           break;
         }
       }
@@ -332,6 +334,7 @@ class CoordServiceImpl final : public CoordService::Service {
           serverinfo->set_serverid(cluster3[i].serverID);
           serverinfo->set_hostname(cluster3[i].hostname);
           serverinfo->set_port(cluster3[i].port);
+          serverinfo->set_type(cluster3[i].type);
           break;
         }
       }

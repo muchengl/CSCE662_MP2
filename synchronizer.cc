@@ -294,7 +294,7 @@ void run_synchronizer(std::string coordIP, std::string coordPort, std::string po
     //TODO: begin synchronization process
     while(true){
         //change this to 30 eventually
-        sleep(5);
+        sleep(10);
 
         std::cout<<"\n\n******************* SYNC LUNCH! *******************"<<std::endl;
 
@@ -424,12 +424,28 @@ void sync_all_user(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
   );
 }
 
+// void removeDuplicates(std::vector<std::string>& vec) {
+//     std::sort(vec.begin(), vec.end());
+
+//     auto last = std::unique(vec.begin(), vec.end());
+
+//     vec.erase(last, vec.end());
+// }
+
 void removeDuplicates(std::vector<std::string>& vec) {
-    std::sort(vec.begin(), vec.end());
+    std::set<std::pair<int, int>> seen;
+    std::vector<std::string> uniqueVec;
 
-    auto last = std::unique(vec.begin(), vec.end());
+    for (const auto& line : vec) {
+        int first, second;
+        if (sscanf(line.c_str(), "%d %d", &first, &second) == 2) {
+            if (seen.insert({first, second}).second) {
+                uniqueVec.push_back(line);
+            }
+        }
+    }
 
-    vec.erase(last, vec.end());
+    vec.swap(uniqueVec);
 }
 
 void aggregateRelations(int synchID,const GetFLResponse& response, std::vector<std::string>& aggregatedRelations) {
@@ -440,8 +456,8 @@ void aggregateRelations(int synchID,const GetFLResponse& response, std::vector<s
         // 每行格式为 "userID1 userID2"
         // userID1 可以是其他集群的关注关系
         std::istringstream iss(line);
-        std::string user1, user2;
-        if (iss >> user1 >> user2) {
+        std::string user1, user2,time;
+        if (iss >> user1 >> user2 >> time) {
             // 只有当两个用户都在本集群时才加入到聚合关系中
             if (currentClusterUsers.count(user2) > 0) {
                 aggregatedRelations.push_back(line);
@@ -467,12 +483,12 @@ void sync_follow(std::shared_ptr<CoordService::Stub> coord_stub_,int synchID){
    // Get lock
     std::cout<<"       >TRY GET LOCK: "<<masterf<<" "<<slavef<<std::endl;
     while(true){
-      std::cout<<"       >TRY GET LOCK: "<<masterf<<std::endl;
+      //std::cout<<"       >TRY GET LOCK: "<<masterf<<std::endl;
       int k=lockFile(masterf);
       if(k==0) break;
     }
     while(true){
-       std::cout<<"       >TRY GET LOCK: "<<slavef<<std::endl;
+       //std::cout<<"       >TRY GET LOCK: "<<slavef<<std::endl;
       int k=lockFile(slavef);
       if(k==0) break;
     }
@@ -540,16 +556,18 @@ std::set<int> getFollowedUsers(int uid,std::string clusterID) {
     );
 
     std::ifstream file(filename);
-    int user1, user2;
+    std::string user1, user2, time;
 
     if (!file.is_open()) {
         std::cerr << "无法打开文件！" << std::endl;
         return followedUsers;
     }
 
-    while (file >> user1 >> user2) {
-        if (user1 == uid) {
-            followedUsers.insert(user2);
+    while (file >> user1 >> user2 >> time) {
+        if (stoi(user1) == uid) {
+            followedUsers.insert(
+              stoi(user2)
+            );
         }
     }
 
@@ -564,10 +582,16 @@ struct TimelineEntry {
     std::string timestamp;
 
     bool operator<(const TimelineEntry& other) const {
-        if(timestamp == other.timestamp){
-          if(text == other.text) return 0;
-          return text > other.text;
-        }
+        // if(timestamp == other.timestamp){
+        //   // if(text == other.text) return 0;
+        //   // return text > other.text;
+        //   const char* arr1 = text.c_str();
+        //   const char* arr2 = other.text.c_str();
+
+        //   // if(arr1[2]>arr2[2]){
+            
+        //   // }
+        // }
         return timestamp > other.timestamp;
     }
 };
@@ -580,46 +604,46 @@ TimelineEntry parseTimelineEntry(const std::string& entryStr) {
 }
 
 int lockFile(const std::string& filePath) {
-    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
-    if (fd == -1) {
-        return -1;  // 打开文件失败
-    }
+    // int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
+    // if (fd == -1) {
+    //     return -1;  // 打开文件失败
+    // }
 
-    struct flock fl;
-    fl.l_type = F_WRLCK;   // 设置为写锁
-    fl.l_whence = SEEK_SET;
-    fl.l_start = 0;        // 锁定整个文件
-    fl.l_len = 0;          // 0 表示锁定到文件末尾
-    fl.l_pid = getpid();
+    // struct flock fl;
+    // fl.l_type = F_WRLCK;   // 设置为写锁
+    // fl.l_whence = SEEK_SET;
+    // fl.l_start = 0;        // 锁定整个文件
+    // fl.l_len = 0;          // 0 表示锁定到文件末尾
+    // fl.l_pid = getpid();
 
-    if (fcntl(fd, F_SETLK, &fl) == -1) {
-        close(fd);
-        return -1;  // 获取锁失败
-    }
+    // if (fcntl(fd, F_SETLK, &fl) == -1) {
+    //     close(fd);
+    //     return -1;  // 获取锁失败
+    // }
 
-    close(fd);  // 关闭文件描述符
+    // close(fd);  // 关闭文件描述符
     return 0;    // 锁定成功
 }
 
 int unlockFile(const std::string& filePath) {
-    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
-    if (fd == -1) {
-        return -1;  // 打开文件失败
-    }
+    // int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
+    // if (fd == -1) {
+    //     return -1;  // 打开文件失败
+    // }
 
-    struct flock fl;
-    fl.l_type = F_UNLCK;   // 设置为解锁
-    fl.l_whence = SEEK_SET;
-    fl.l_start = 0;        // 解锁整个文件
-    fl.l_len = 0;          // 0 表示解锁到文件末尾
-    fl.l_pid = getpid();
+    // struct flock fl;
+    // fl.l_type = F_UNLCK;   // 设置为解锁
+    // fl.l_whence = SEEK_SET;
+    // fl.l_start = 0;        // 解锁整个文件
+    // fl.l_len = 0;          // 0 表示解锁到文件末尾
+    // fl.l_pid = getpid();
 
-    if (fcntl(fd, F_SETLK, &fl) == -1) {
-        close(fd);
-        return -1;  // 解锁失败
-    }
+    // if (fcntl(fd, F_SETLK, &fl) == -1) {
+    //     close(fd);
+    //     return -1;  // 解锁失败
+    // }
 
-    close(fd);  // 关闭文件描述符
+    // close(fd);  // 关闭文件描述符
     return 0;    // 解锁成功
 }
 

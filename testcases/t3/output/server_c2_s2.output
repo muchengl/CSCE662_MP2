@@ -5,1336 +5,464 @@ Create file
 I am slave
 Can't find user: 3, new user
 Can't find user: 1, new user
-try get lock: FOLLOWER_2_2.txt
 Follow: 2 -> 1
-writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
 I am slave
-try get lock: FOLLOWER_2_2.txt
 Follow: 2 -> 3
-writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
 I am slave
-try get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 I am slave
-try get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 I am slave
 Login:2
-My slave is: 1, Host: 127.0.0.1, Port: 20000
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 Login:5
 Create file
-My slave is: 1, Host: 127.0.0.1, Port: 20000
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 LIST
-try get lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
 Follow: 5 -> 1
-writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
-try get lock: FOLLOWER_2_2.txt
-Follow: 2 -> 5
-writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
-try get lock: FOLLOWER_2_2.txt
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 Follow: 5 -> 2
-writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
-try get lock: FOLLOWER_2_2.txt
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 Follow: 5 -> 3
-writeFollowerAndFollowingToFile() Try getting lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+Follow: 2 -> 5
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 LIST
-try get lock: FOLLOWER_2_2.txt
 LIST
-try get lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
 USER: 5 JOIN TIMELINE!
 Monitor File Change: TIMELINE_2_2_5.txt
-INFO: 3 p32 2023-11-23T22:27:33Z
-Timestamp: seconds: 1700778453
-
-INFO: 3 p31 2023-11-23T22:27:32Z
-Timestamp: seconds: 1700778452
-
-INFO: 2 p22 2023-11-23T22:27:16Z
-Timestamp: seconds: 1700778436
-
-INFO: 2 p21 2023-11-23T22:27:16Z
-Timestamp: seconds: 1700778436
-
-INFO: 1 p12 2023-11-23T22:27:00Z
-Timestamp: seconds: 1700778420
-
-INFO: 1 p11 2023-11-23T22:26:59Z
-Timestamp: seconds: 1700778419
-
-try get lock: FOLLOWER_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
+INFO: 3 p32 2023-11-24T01:53:03.689611915Z
+5 follow 3 in 2023-11-24T01:54:39.767822812Z
+SKIP TIMELINE, 3 p32 2023-11-24T01:53:03.689611915Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.689611915Z
+INFO: 3 p31 2023-11-24T01:53:03.180920461Z
+5 follow 3 in 2023-11-24T01:54:39.767822812Z
+SKIP TIMELINE, 3 p31 2023-11-24T01:53:03.180920461Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.180920461Z
+INFO: 2 p22 2023-11-24T01:52:32.154597825Z
+5 follow 2 in 2023-11-24T01:54:39.264421185Z
+SKIP TIMELINE, 2 p22 2023-11-24T01:52:32.154597825Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:32.154597825Z
+INFO: 2 p21 2023-11-24T01:52:31.653978972Z
+5 follow 2 in 2023-11-24T01:54:39.264421185Z
+SKIP TIMELINE, 2 p21 2023-11-24T01:52:31.653978972Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:31.653978972Z
+INFO: 1 p12 2023-11-24T01:52:00.632931791Z
+5TRY GET LOCK
 GET lock,TIMELINE_2_2_5.txt
+ follow 1 in 2023-11-24T01:54:38.767679633Z
+SKIP TIMELINE, 1 p12 2023-11-24T01:52:00.632931791Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.632931791Z
+INFO: 1 p11 2023-11-24T01:52:00.132100794Z
+5 follow 1 in 2023-11-24T01:54:38.767679633Z
+SKIP TIMELINE, 1 p11 2023-11-24T01:52:00.132100794Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.132100794Z
+WRITE FILE =============
 Same cluster
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
+WRITE FILE =============
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+WRITE FILE =============
+WRITE FILE =============
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 5 p51 2023-11-23T22:29:15Z
+New line added: 5 p51 2023-11-24T01:55:14.278137102Z
 5 send msg,5
-New line added: 5 p51 2023-11-23T22:29:15Z
+New line added: 5 p51 2023-11-24T01:55:14.278137102Z
 5 send msg,5
-New line added: 5 p51 2023-11-23T22:29:15Z
+New line added: 5 p51 2023-11-24T01:55:14.278137102Z
 5 send msg,5
-New line added: 3 p32 2023-11-23T22:27:33Z
+New line added: 5 p52 2023-11-24T01:55:14.779299877Z
+5 send msg,5
+New line added: 5 p52 2023-11-24T01:55:14.779299877Z
+5 send msg,5
+New line added: 5 p52 2023-11-24T01:55:14.779299877Z
+5 send msg,5
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+New line added: 3 p33 2023-11-24T01:55:45.804364488Z
 3 send msg,5
-Timestamp: seconds: 1700778453
+Timestamp: seconds: 1700790945
+nanos: 804364488
 
-New line added: 3 p31 2023-11-23T22:27:32Z
+New line added: 3 p34 2023-11-24T01:55:46.305016708Z
 3 send msg,5
-Timestamp: seconds: 1700778452
-
-New line added: 2 p22 2023-11-23T22:27:16Z
-2 send msg,5
-Timestamp: seconds: 1700778436
-
-New line added: 2 p21 2023-11-23T22:27:16Z
-2 send msg,5
-Timestamp: seconds: 1700778436
-
-New line added: 1 p12 2023-11-23T22:27:00Z
-1 send msg,5
-Timestamp: seconds: 1700778420
-
-New line added: 1 p11 2023-11-23T22:26:59Z
-1 send msg,5
-Timestamp: seconds: 1700778419
+Timestamp: seconds: 1700790946
+nanos: 305016708
 
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-try get lock: FOLLOWER_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-New line added: 1 p14 2023-11-23T22:29:48Z
-1 send msg,5
-Timestamp: seconds: 1700778588
-
-New line added: 1 p13 2023-11-23T22:29:48Z
-1 send msg,5
-Timestamp: seconds: 1700778588
-
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-try get lock: FOLLOWER_2_2.txt
 USER: 2 JOIN TIMELINE!
 Monitor File Change: TIMELINE_2_2_2.txt
-INFO: 1 p14 2023-11-23T22:29:48Z
-Timestamp: seconds: 1700778588
+INFO: 3 p34 2023-11-24T01:55:46.305016708Z
+2 follow 3 in 2023-11-24T01:51:26.610069914Z
+Timestamp: seconds: 1700790946
+nanos: 305016708
 
-INFO: 1 p13 2023-11-23T22:29:48Z
-Timestamp: seconds: 1700778588
+INFO: 3 p33 2023-11-24T01:55:45.804364488Z
+2 follow 3 in 2023-11-24T01:51:26.610069914Z
+Timestamp: seconds: 1700790945
+nanos: 804364488
 
-INFO: 5 p51 2023-11-23T22:29:15Z
-Timestamp: seconds: 1700778555
+INFO: 5 p52 2023-11-24T01:55:14.779299877Z
+2 follow 5 in 2023-11-24T01:54:40.772550307Z
+Timestamp: seconds: 1700790914
+nanos: 779299877
 
-INFO: 3 p34 2023-11-23T22:29:15Z
-Timestamp: seconds: 1700778555
+INFO: 5 p51 2023-11-24T01:55:14.278137102Z
+2 follow 5 in 2023-11-24T01:54:40.772550307Z
+Timestamp: seconds: 1700790914
+nanos: 278137102
 
-INFO: 3 p33 2023-11-23T22:29:15Z
-Timestamp: seconds: 1700778555
+INFO: 3 p32 2023-11-24T01:53:03.689611915Z
+2 follow 3 in 2023-11-24T01:51:26.610069914Z
+Timestamp: seconds: 1700790783
+nanos: 689611915
 
-INFO: 3 p32 2023-11-23T22:27:33Z
-Timestamp: seconds: 1700778453
+INFO: 3 p31 2023-11-24T01:53:03.180920461Z
+2 follow 3 in 2023-11-24T01:51:26.610069914Z
+Timestamp: seconds: 1700790783
+nanos: 180920461
 
-INFO: 3 p31 2023-11-23T22:27:32Z
-Timestamp: seconds: 1700778452
+INFO: 2 p22 2023-11-24T01:52:32.154597825Z
+INFO: 2 p21 2023-11-24T01:52:31.653978972Z
+INFO: 1 p12 2023-11-24T01:52:00.632931791Z
+2 follow 1 in 2023-11-24T01:51:26.108702241Z
+Timestamp: seconds: 1700790720
+nanos: 632931791
 
-INFO: 2 p22 2023-11-23T22:27:16Z
-INFO: 2 p21 2023-11-23T22:27:16Z
-INFO: 1 p12 2023-11-23T22:27:00Z
-Timestamp: seconds: 1700778420
+INFO: 1 p11 2023-11-24T01:52:00.132100794Z
+2 follow 1 in 2023-11-24T01:51:26.108702241Z
+Timestamp: seconds: 1700790720
+nanos: 132100794
 
-INFO: 1 p11 2023-11-23T22:26:59Z
-Timestamp: seconds: 1700778419
-
-try get lock: FOLLOWER_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
 Same cluster
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-New line added: 5 p52 2023-11-23T22:29:15Z
-5 send msg,5
-New line added: 5 p52 2023-11-23T22:29:15Z
-5 send msg,5
-New line added: 5 p52 2023-11-23T22:29:15Z
-5 send msg,5
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+New line added: 2 p23 2023-11-24T01:56:17.320801653Z
+2 send msg,5
+Timestamp: seconds: 1700790977
+nanos: 320801653
+
 WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
 Same cluster
 WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
-try get lock: FOLLOWER_2_2.txt
+WRITE FILE =============
+WRITE FILE =============
+My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+New line added: 2 p23 2023-11-24T01:56:17.320801653Z
+2 send msg,2
+New line added: 2 p24 2023-11-24T01:56:17.829691177Z
+2 send msg,2
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+New line added: 2 p24 2023-11-24T01:56:17.829691177Z
+2 send msg,5
+Timestamp: seconds: 1700790977
+nanos: 829691177
+
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+1 send msg,5
+Timestamp: seconds: 1700791008
+nanos: 851005219
+
+New line added: 1 p14 2023-11-24T01:56:49.352705751Z
+1 send msg,5
+Timestamp: seconds: 1700791009
+nanos: 352705751
+
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+1 send msg,2
+Timestamp: seconds: 1700791008
+nanos: 851005219
+
+New line added: 1 p14 2023-11-24T01:56:49.352705751Z
+1 send msg,2
+Timestamp: seconds: 1700791009
+nanos: 352705751
+
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+GET lock,TIMELINE_2_2_5.txt
 Login:5
 My slave is: 1, Host: 127.0.0.1, Port: 20000
-WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
-Same cluster
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
 LIST
-try get lock: FOLLOWER_2_2.txt
-try get lock: FOLLOWER_2_2.txt
 USER: 5 JOIN TIMELINE!
 Monitor File Change: TIMELINE_2_2_5.txt
-INFO: 2 p24 2023-11-23T22:29:32Z
-Timestamp: seconds: 1700778572
+INFO: 1 p14 2023-11-24T01:56:49.352705751Z
+5 follow 1 in 2023-11-24T01:54:38.767679633Z
+Timestamp: seconds: 1700791009
+nanos: 352705751
 
-INFO: 2 p23 2023-11-23T22:29:31Z
-Timestamp: seconds: 1700778571
+INFO: 1 p13 2023-11-24T01:56:48.851005219Z
+5 follow 1 in 2023-11-24T01:54:38.767679633Z
+Timestamp: seconds: 1700791008
+nanos: 851005219
 
-INFO: 1 p14 2023-11-23T22:29:48Z
-Timestamp: seconds: 1700778588
+INFO: 2 p24 2023-11-24T01:56:17.829691177Z
+5 follow 2 in 2023-11-24T01:54:39.264421185Z
+Timestamp: seconds: 1700790977
+nanos: 829691177
 
-INFO: 1 p13 2023-11-23T22:29:48Z
-Timestamp: seconds: 1700778588
+INFO: 2 p23 2023-11-24T01:56:17.320801653Z
+5 follow 2 in 2023-11-24T01:54:39.264421185Z
+Timestamp: seconds: 1700790977
+nanos: 320801653
 
-INFO: 5 p52 2023-11-23T22:29:15Z
-INFO: 5 p51 2023-11-23T22:29:15Z
-INFO: 3 p34 2023-11-23T22:29:15Z
-Timestamp: seconds: 1700778555
+INFO: 3 p34 2023-11-24T01:55:46.305016708Z
+5 follow 3 in 2023-11-24T01:54:39.767822812Z
+Timestamp: seconds: 1700790946
+nanos: 305016708
 
-INFO: 3 p33 2023-11-23T22:29:15Z
-Timestamp: seconds: 1700778555
+INFO: 3 p33 2023-11-24T01:55:45.804364488Z
+5 follow 3 in 2023-11-24T01:54:39.767822812Z
+Timestamp: seconds: 1700790945
+nanos: 804364488
 
-INFO: 3 p32 2023-11-23T22:27:33Z
-Timestamp: seconds: 1700778453
-
-INFO: 3 p31 2023-11-23T22:27:32Z
-Timestamp: seconds: 1700778452
-
-INFO: 2 p22 2023-11-23T22:27:16Z
-Timestamp: seconds: 1700778436
-
-INFO: 2 p21 2023-11-23T22:27:16Z
-Timestamp: seconds: 1700778436
-
-INFO: 1 p12 2023-11-23T22:27:00Z
-Timestamp: seconds: 1700778420
-
-INFO: 1 p11 2023-11-23T22:26:59Z
-Timestamp: seconds: 1700778419
-
+INFO: 5 p52 2023-11-24T01:55:14.779299877Z
+INFO: 5 p51 2023-11-24T01:55:14.278137102Z
+INFO: 3 p32 2023-11-24T01:53:03.689611915Z
+5 follow 3 in 2023-11-24T01:54:39.767822812Z
+SKIP TIMELINE, 3 p32 2023-11-24T01:53:03.689611915Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.689611915Z
+INFO: 3 p31 2023-11-24T01:53:03.180920461Z
+5 follow 3 in 2023-11-24T01:54:39.767822812Z
+SKIP TIMELINE, 3 p31 2023-11-24T01:53:03.180920461Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.180920461Z
+INFO: 2 p22 2023-11-24T01:52:32.154597825Z
+5 follow 2 in 2023-11-24T01:54:39.264421185Z
+SKIP TIMELINE, 2 p22 2023-11-24T01:52:32.154597825Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:32.154597825Z
+INFO: 2 p21 2023-11-24T01:52:31.653978972Z
+5 follow 2 in 2023-11-24T01:54:39.264421185Z
+SKIP TIMELINE, 2 p21 2023-11-24T01:52:31.653978972Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:31.653978972Z
+INFO: 1 p12 2023-11-24T01:52:00.632931791Z
+5 follow 1 in 2023-11-24T01:54:38.767679633Z
+SKIP TIMELINE, 1 p12 2023-11-24T01:52:00.632931791Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.632931791Z
+INFO: 1 p11 2023-11-24T01:52:00.132100794Z
+5 follow 1 in 2023-11-24T01:54:38.767679633Z
+SKIP TIMELINE, 1 p11 2023-11-24T01:52:00.132100794Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.132100794Z
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-try get lock: FOLLOWER_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-Same cluster
-WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
-try get lock: FOLLOWER_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-Same cluster
-WRITE FILE =============
-try get lock: TIMELINE_2_2_2.txt
-WRITE FILE =============
-try get lock: TIMELINE_2_2_5.txt
-My slave is: 1, Host: 127.0.0.1, Port: 20000
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
-New line added: 5 p54 2023-11-23T22:31:04Z
-5 send msg,2
-Timestamp: seconds: 1700778664
-
-New line added: 5 p53 2023-11-23T22:31:04Z
-5 send msg,2
-Timestamp: seconds: 1700778664
-
-New line added: 2 p24 2023-11-23T22:29:32Z
-2 send msg,2
-New line added: 2 p24 2023-11-23T22:29:32Z
-2 send msg,2
-New line added: 2 p24 2023-11-23T22:29:32Z
-2 send msg,2
-New line added: 2 p23 2023-11-23T22:29:31Z
-2 send msg,2
-New line added: 2 p23 2023-11-23T22:29:31Z
-2 send msg,2
-New line added: 2 p23 2023-11-23T22:29:31Z
-2 send msg,2
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+WRITE FILE =============
+WRITE FILE =============
+My slave is: 1, Host: 127.0.0.1, Port: 20000
+WRITE FILE =============
+Same cluster
+WRITE FILE =============
+WRITE FILE =============
+WRITE FILE =============
+My slave is: 1, Host: 127.0.0.1, Port: 20000
 User: 5re-login, finish monitorFile
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 5 p54 2023-11-23T22:31:04Z
+New line added: 5 p53 2023-11-24T01:57:52.930069818Z
 5 send msg,5
-New line added: 5 p53 2023-11-23T22:31:04Z
+New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+5 send msg,5
+New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+5 send msg,5
+New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+5 send msg,5
+New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+5 send msg,5
+New line added: 5 p54 2023-11-24T01:57:53.430231218Z
 5 send msg,5
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
+New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+5 send msg,2
+Timestamp: seconds: 1700791072
+nanos: 930069818
+
+New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+5 send msg,2
+Timestamp: seconds: 1700791073
+nanos: 430231218
+
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
+New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+5 send msg,2
+Timestamp: seconds: 1700791073
+nanos: 430231218
+
+New line added: 5 p54 2023-11-24T01:57:53Z
+5 send msg,2
+Timestamp: seconds: 1700791073
+
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_2.txt
-GET lock,TIMELINE_2_2_2.txt
-TRY GET LOCK
-try get lock: TIMELINE_2_2_5.txt
-GET lock,TIMELINE_2_2_5.txt

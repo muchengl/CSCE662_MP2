@@ -62,8 +62,12 @@ def run_section(idx,commands,processes,output):
         return
 
     elif commands[0].startswith("SLEEP") :
-        print("SLEEP : ",commands[1])
-        time.sleep(float(commands[1]))
+        # print("SLEEP : ",commands[1])
+        # time.sleep(float(commands[1]))
+        print("SLEEP : ",30)
+        time.sleep(30)
+        if commands[1] == "10000":
+            time.sleep(10000)
     
     elif commands[0].startswith("RUN") :
         for command in commands[1:]:

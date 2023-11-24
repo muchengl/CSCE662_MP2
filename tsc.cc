@@ -8,6 +8,7 @@
 #include <grpc++/grpc++.h>
 #include "client.h"
 #include "google/protobuf/util/time_util.h"
+#include <chrono>
 
 #include "sns.grpc.pb.h"
 #include "coordinator.grpc.pb.h"
@@ -42,9 +43,19 @@ Message MakeMessage(const std::string& username, const std::string& msg) {
     Message m;
     m.set_username(username);
     m.set_msg(msg);
+
+    // google::protobuf::Timestamp* timestamp = new google::protobuf::Timestamp();
+    // timestamp->set_seconds(time(NULL));
+    // timestamp->set_nanos(0);
+
+    auto now = std::chrono::system_clock::now();
+    auto duration = now.time_since_epoch();
+    auto seconds = std::chrono::duration_cast<std::chrono::seconds>(duration);
+    auto nanos = std::chrono::duration_cast<std::chrono::nanoseconds>(duration - seconds);
     google::protobuf::Timestamp* timestamp = new google::protobuf::Timestamp();
-    timestamp->set_seconds(time(NULL));
-    timestamp->set_nanos(0);
+    timestamp->set_seconds(seconds.count());
+    timestamp->set_nanos(nanos.count());
+
     m.set_allocated_timestamp(timestamp);
     return m;
 }

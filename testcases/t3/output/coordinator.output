@@ -33,10 +33,7 @@ Find master, cluster1 - server1
 Find master, cluster2 - server1
 Find master, cluster3 - server1
 Find master, cluster1 - server1
-Find master, cluster1 - server1
 Find master, cluster2 - server1
-Find master, cluster2 - server1
-Find master, cluster3 - server1
 Find master, cluster3 - server1
 Find master, cluster1 - server1
 Find master, cluster1 - server1
@@ -91,13 +88,6 @@ Find master, cluster2 - server1
 Find master, cluster3 - server1
 Find master, cluster1 - server1
 Find master, cluster2 - server1
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server1
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server1
-check 2:1 is down
 Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
@@ -105,20 +95,13 @@ check 2:1 is down
 Find master, cluster1 - server1
 check 2:1 is down
 New master, cluster2 - server2
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster3 - server1
-Find master, cluster2 - server2
 check 2:1 is down
 Find master, cluster3 - server1
 check 2:1 is down
-Find master, cluster2 - server2
 check 2:1 is down
-Find master, cluster1 - server1
 check 2:1 is down
-Find master, cluster2 - server2
 check 2:1 is down
-Find master, cluster3 - server1
+check 2:1 is down
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
@@ -130,137 +113,12 @@ Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster2 - server2
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-check 2:1 is down
 check 2:1 is down
 Find master, cluster1 - server1
 check 2:1 is down
 Find master, cluster2 - server2
 check 2:1 is down
 Find master, cluster3 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster2 - server2
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-Find master, cluster3 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-Find master, cluster2 - server2
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
-check 2:1 is down
-check 2:1 is down
-Find master, cluster1 - server1
-check 2:1 is down
-Find master, cluster2 - server2
-check 2:1 is down
-Find master, cluster3 - server1
-check 2:1 is down
 check 2:1 is down
 Find master, cluster2 - server2
 check 2:1 is down
@@ -272,9 +130,136 @@ Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
 Find master, cluster1 - server1
 check 2:1 is down
 Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster2 - server2
+Find master, cluster2 - server2
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster2 - server2
+Find master, cluster3 - server1
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
 check 2:1 is down
 Find master, cluster3 - server1
 check 2:1 is down
@@ -288,12 +273,8 @@ Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
-Find master, cluster1 - server1
-Find master, cluster1 - server1
 check 2:1 is down
-Find master, cluster2 - server2
 check 2:1 is down
-Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
@@ -305,18 +286,108 @@ Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
 Find master, cluster1 - server1
 check 2:1 is down
-check 2:1 is down
 Find master, cluster2 - server2
+check 2:1 is down
 Find master, cluster3 - server1
 check 2:1 is down
 check 2:1 is down
 check 2:1 is down
-Find master, cluster1 - server1
+check 2:1 is down
+check 2:1 is down
 check 2:1 is down
 check 2:1 is down
 Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
+Find master, cluster3 - server1
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+check 2:1 is down
+Find master, cluster1 - server1
+check 2:1 is down
+Find master, cluster2 - server2
+check 2:1 is down
 ReNew Node(2) - (1)
 Find master, cluster3 - server1
 Find master, cluster1 - server1
@@ -329,6 +400,8 @@ Find master, cluster1 - server1
 Find master, cluster2 - server2
 Find master, cluster3 - server1
 Find master, cluster2 - server2
+Find master, cluster2 - server2
+Find master, cluster2 - server2
 Find master, cluster1 - server1
 Find master, cluster2 - server2
 Find master, cluster3 - server1
@@ -347,63 +420,3 @@ Find master, cluster3 - server1
 Find master, cluster1 - server1
 Find master, cluster2 - server2
 Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster2 - server2
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
-Find master, cluster2 - server2
-Find master, cluster3 - server1
-Find master, cluster1 - server1
