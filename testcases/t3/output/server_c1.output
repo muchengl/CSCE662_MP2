@@ -11,122 +11,348 @@ I am slave
 LIST
 Can't find user: 3, new user
 Can't find user: 2, new user
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 Follow: 1 -> 2
 My slave is: 2, Host: 127.0.0.1, Port: 10001
 Can't find user: 3, new user
 Can't find user: 2, new user
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 Follow: 1 -> 2
 I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 Follow: 1 -> 3
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 Follow: 1 -> 3
 I am slave
 LIST
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 USER: 1 JOIN TIMELINE!
 Monitor File Change: TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 I am slave
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
-New line added: 1 p11 2023-11-24T01:52:00.132100794Z
+New line added: 1 p11 2023-11-27T23:40:04.218636844Z
 1 send msg,1
-New line added: 1 p11 2023-11-24T01:52:00.132100794Z
+New line added: 1 p11 2023-11-27T23:40:04.218636844Z
 1 send msg,1
-New line added: 1 p12 2023-11-24T01:52:00.632931791Z
+New line added: 1 p12 2023-11-27T23:40:04.719233125Z
 1 send msg,1
-New line added: 1 p12 2023-11-24T01:52:00.632931791Z
+New line added: 1 p12 2023-11-27T23:40:04.719233125Z
 1 send msg,1
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
-New line added: 2 p21 2023-11-24T01:52:31.653978972Z
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+New line added: 2 p21 2023-11-27T23:40:35.723192203Z
 2 send msg,1
-Timestamp: seconds: 1700790751
-nanos: 653978972
+Timestamp: seconds: 1701128435
+nanos: 723192203
 
-New line added: 2 p22 2023-11-24T01:52:32.154597825Z
+New line added: 2 p22 2023-11-27T23:40:36.223819886Z
 2 send msg,1
-Timestamp: seconds: 1700790752
-nanos: 154597825
+Timestamp: seconds: 1701128436
+nanos: 223819886
 
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
-New line added: 3 p31 2023-11-24T01:53:03.180920461Z
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+New line added: 3 p31 2023-11-27T23:41:07.254357988Z
 3 send msg,1
-Timestamp: seconds: 1700790783
-nanos: 180920461
+Timestamp: seconds: 1701128467
+nanos: 254357988
 
-New line added: 3 p32 2023-11-24T01:53:03.689611915Z
+New line added: 3 p32 2023-11-27T23:41:07.766321983Z
 3 send msg,1
-Timestamp: seconds: 1700790783
-nanos: 689611915
+Timestamp: seconds: 1701128467
+nanos: 766321983
 
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 Login:1
 My slave is: 2, Host: 127.0.0.1, Port: 10001
@@ -134,172 +360,397 @@ Login:1
 I am slave
 User: 1re-login, finish monitorFile
 Can't find user: 5, new user
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 Follow: 1 -> 5
 My slave is: 2, Host: 127.0.0.1, Port: 10001
 Can't find user: 5, new user
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 Follow: 1 -> 5
 I am slave
 LIST
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 USER: 1 JOIN TIMELINE!
 Monitor File Change: TIMELINE_1_1_1.txt
-INFO: 2 p24 2023-11-24T01:56:17.829691177Z
-1 follow 2 in 2023-11-24T01:51:25.107525390Z
-Timestamp: seconds: 1700790977
-nanos: 829691177
+INFO: 2 p24 2023-11-27T23:44:21.913747212Z
+1 follow 2 in 2023-11-27T23:39:29.188682684Z
+Timestamp: seconds: 1701128661
+nanos: 913747212
 
-INFO: 2 p23 2023-11-24T01:56:17.320801653Z
-1 follow 2 in 2023-11-24T01:51:25.107525390Z
-Timestamp: seconds: 1700790977
-nanos: 320801653
+INFO: 2 p23 2023-11-27T23:44:21.403032116Z
+1 follow 2 in 2023-11-27T23:39:29.188682684Z
+Timestamp: seconds: 1701128661
+nanos: 403032116
 
-INFO: 3 p34 2023-11-24T01:55:46.305016708Z
-1 follow 3 in 2023-11-24T01:51:25.607760772Z
-Timestamp: seconds: 1700790946
-nanos: 305016708
+INFO: 3 p34 2023-11-27T23:43:50.376541409Z
+1 follow 3 in 2023-11-27T23:39:29.689856004Z
+Timestamp: seconds: 1701128630
+nanos: 376541409
 
-INFO: 3 p33 2023-11-24T01:55:45.804364488Z
-1 follow 3 in 2023-11-24T01:51:25.607760772Z
-Timestamp: seconds: 1700790945
-nanos: 804364488
+INFO: 3 p33 2023-11-27T23:43:49.876219596Z
+1 follow 3 in 2023-11-27T23:39:29.689856004Z
+Timestamp: seconds: 1701128629
+nanos: 876219596
 
-INFO: 5 p52 2023-11-24T01:55:14.779299877Z
-1 follow 5 in 2023-11-24T01:54:40.274668877Z
-Timestamp: seconds: 1700790914
-nanos: 779299877
+INFO: 5 p52 2023-11-27T23:43:18.853750238Z
+1 follow 5 in 2023-11-27T23:42:44.351927365Z
+Timestamp: seconds: 1701128598
+nanos: 853750238
 
-INFO: 5 p51 2023-11-24T01:55:14.278137102Z
-1 follow 5 in 2023-11-24T01:54:40.274668877Z
-Timestamp: seconds: 1700790914
-nanos: 278137102
+INFO: 5 p51 2023-11-27T23:43:18.352908159Z
+1 follow 5 in 2023-11-27T23:42:44.351927365Z
+Timestamp: seconds: 1701128598
+nanos: 352908159
 
-INFO: 3 p32 2023-11-24T01:53:03.689611915Z
-1 follow 3 in 2023-11-24T01:51:25.607760772Z
-Timestamp: seconds: 1700790783
-nanos: 689611915
+INFO: 3 p32 2023-11-27T23:41:07.766321983Z
+1 follow 3 in 2023-11-27T23:39:29.689856004Z
+Timestamp: seconds: 1701128467
+nanos: 766321983
 
-INFO: 3 p31 2023-11-24T01:53:03.180920461Z
-1 follow 3 in 2023-11-24T01:51:25.607760772Z
-Timestamp: seconds: 1700790783
-nanos: 180920461
+INFO: 3 p31 2023-11-27T23:41:07.254357988Z
+1 follow 3 in 2023-11-27T23:39:29.689856004Z
+Timestamp: seconds: 1701128467
+nanos: 254357988
 
-INFO: 2 p22 2023-11-24T01:52:32.154597825Z
-1 follow 2 in 2023-11-24T01:51:25.107525390Z
-Timestamp: seconds: 1700790752
-nanos: 154597825
+INFO: 2 p22 2023-11-27T23:40:36.223819886Z
+1 follow 2 in 2023-11-27T23:39:29.188682684Z
+Timestamp: seconds: 1701128436
+nanos: 223819886
 
-INFO: 2 p21 2023-11-24T01:52:31.653978972Z
-1 follow 2 in 2023-11-24T01:51:25.107525390Z
-Timestamp: seconds: 1700790751
-nanos: 653978972
+INFO: 2 p21 2023-11-27T23:40:35.723192203Z
+1 follow 2 in 2023-11-27T23:39:29.188682684Z
+Timestamp: seconds: 1701128435
+nanos: 723192203
 
-INFO: 1 p12 2023-11-24T01:52:00.632931791Z
-INFO: 1 p11 2023-11-24T01:52:00.132100794Z
+INFO: 1 p12 2023-11-27T23:40:04.719233125Z
+INFO: 1 p11 2023-11-27T23:40:04.218636844Z
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 I am slave
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
-New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+New line added: 1 p13 2023-11-27T23:44:52.931024810Z
 1 send msg,1
-New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+New line added: 1 p13 2023-11-27T23:44:52.931024810Z
 1 send msg,1
-New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+New line added: 1 p13 2023-11-27T23:44:52.931024810Z
 1 send msg,1
-New line added: 1 p14 2023-11-24T01:56:49.352705751Z
+New line added: 1 p14 2023-11-27T23:44:53.432031846Z
 1 send msg,1
-New line added: 1 p14 2023-11-24T01:56:49.352705751Z
+New line added: 1 p14 2023-11-27T23:44:53.432031846Z
 1 send msg,1
-New line added: 1 p14 2023-11-24T01:56:49.352705751Z
+New line added: 1 p14 2023-11-27T23:44:53.432031846Z
 1 send msg,1
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
-New line added: 5 p53 2023-11-24T01:57:52Z
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+New line added: 5 p53 2023-11-27T23:45:56.999205788Z
 5 send msg,1
-Timestamp: seconds: 1700791072
+Timestamp: seconds: 1701128756
+nanos: 999205788
 
-New line added: 5 p54 2023-11-24T01:57:53Z
+New line added: 5 p54 2023-11-27T23:45:57.499770931Z
 5 send msg,1
-Timestamp: seconds: 1700791073
+Timestamp: seconds: 1701128757
+nanos: 499770931
 
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-New line added: 5 p54 2023-11-24T01:57:53.430231218Z
-5 send msg,1
-Timestamp: seconds: 1700791073
-nanos: 430231218
-
-New line added: 5 p54 2023-11-24T01:57:53Z
-5 send msg,1
-Timestamp: seconds: 1700791073
-
-TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
 TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt

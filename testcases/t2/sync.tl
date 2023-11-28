@@ -1,4 +1,4 @@
 RUN
-./synchronizer -h localhost -j 9000 -p 9001 -n 1
-./synchronizer -h localhost -j 9000 -p 9002 -n 2
-./synchronizer -h localhost -j 9000 -p 9003 -n 3
+./synchronizer -h localhost -k 9000 -p 9001 -i 1
+./synchronizer -h localhost -k 9000 -p 9002 -i 2
+./synchronizer -h localhost -k 9000 -p 9003 -i 3

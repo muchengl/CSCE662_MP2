@@ -5,15 +5,31 @@ Create file
 I am slave
 Can't find user: 3, new user
 Can't find user: 1, new user
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 Follow: 2 -> 1
 I am slave
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 Follow: 2 -> 3
 I am slave
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 I am slave
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 I am slave
 Login:2
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
@@ -21,448 +37,1101 @@ Login:5
 Create file
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 LIST
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 Follow: 5 -> 1
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 Follow: 5 -> 2
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 Follow: 5 -> 3
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 Follow: 2 -> 5
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 LIST
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 LIST
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 USER: 5 JOIN TIMELINE!
 Monitor File Change: TIMELINE_2_2_5.txt
-INFO: 3 p32 2023-11-24T01:53:03.689611915Z
-5 follow 3 in 2023-11-24T01:54:39.767822812Z
-SKIP TIMELINE, 3 p32 2023-11-24T01:53:03.689611915Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.689611915Z
-INFO: 3 p31 2023-11-24T01:53:03.180920461Z
-5 follow 3 in 2023-11-24T01:54:39.767822812Z
-SKIP TIMELINE, 3 p31 2023-11-24T01:53:03.180920461Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.180920461Z
-INFO: 2 p22 2023-11-24T01:52:32.154597825Z
-5 follow 2 in 2023-11-24T01:54:39.264421185Z
-SKIP TIMELINE, 2 p22 2023-11-24T01:52:32.154597825Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:32.154597825Z
-INFO: 2 p21 2023-11-24T01:52:31.653978972Z
-5 follow 2 in 2023-11-24T01:54:39.264421185Z
-SKIP TIMELINE, 2 p21 2023-11-24T01:52:31.653978972Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:31.653978972Z
-INFO: 1 p12 2023-11-24T01:52:00.632931791Z
-5TRY GET LOCK
+INFO: 3 p32 2023-11-27T23:41:07.766321983Z
+5 follow 3 in 2023-11-27T23:42:43.846293050Z
+SKIP TIMELINE, 3 p32 2023-11-27T23:41:07.766321983Z 2023-11-27T23:42:43.846293050Z > 2023-11-27T23:41:07.766321983Z
+INFO: 3 p31 2023-11-27T23:41:07.254357988Z
+5 follow 3 in 2023-11-27T23:42:43.846293050Z
+SKIP TIMELINE, 3 p31 2023-11-27T23:41:07.254357988Z 2023-11-27T23:42:43.846293050Z > 2023-11-27T23:41:07.254357988Z
+INFO: 2 p22 2023-11-27T23:40:36.223819886Z
+5 follow 2 in 2023-11-27T23:42:43.343190508Z
+SKIP TIMELINE, 2 p22 2023-11-27T23:40:36.223819886Z 2023-11-27T23:42:43.343190508Z > 2023-11-27T23:40:36.223819886Z
+INFO: 2 p21 2023-11-27T23:40:35.723192203Z
+5 follow 2 in 2023-11-27T23:42:43.343190508Z
+SKIP TIMELINE, 2 p21 2023-11-27T23:40:35.723192203Z 2023-11-27T23:42:43.343190508Z > 2023-11-27T23:40:35.723192203Z
+INFO: 1 p12 2023-11-27T23:40:04.719233125Z
+5 follow 1 in 2023-11-27T23:42:42.843265087Z
+SKIP TIMELINE, 1 p12 2023-11-27T23:40:04.719233125Z 2023-11-27T23:42:42.843265087Z > 2023-11-27T23:40:04.719233125Z
+INFO: 1 p11 2023-11-27T23:40:04.218636844Z
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
- follow 1 in 2023-11-24T01:54:38.767679633Z
-SKIP TIMELINE, 1 p12 2023-11-24T01:52:00.632931791Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.632931791Z
-INFO: 1 p11 2023-11-24T01:52:00.132100794Z
-5 follow 1 in 2023-11-24T01:54:38.767679633Z
-SKIP TIMELINE, 1 p11 2023-11-24T01:52:00.132100794Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.132100794Z
+5 follow 1 in 2023-11-27T23:42:42.843265087Z
+SKIP TIMELINE, 1 p11 2023-11-27T23:40:04.218636844Z 2023-11-27T23:42:42.843265087Z > 2023-11-27T23:40:04.218636844Z
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 Same cluster
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 Same cluster
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 5 p51 2023-11-24T01:55:14.278137102Z
+New line added: 5 p51 2023-11-27T23:43:18.352908159Z
 5 send msg,5
-New line added: 5 p51 2023-11-24T01:55:14.278137102Z
+New line added: 5 p51 2023-11-27T23:43:18.352908159Z
 5 send msg,5
-New line added: 5 p51 2023-11-24T01:55:14.278137102Z
+New line added: 5 p51 2023-11-27T23:43:18.352908159Z
 5 send msg,5
-New line added: 5 p52 2023-11-24T01:55:14.779299877Z
+New line added: 5 p52 2023-11-27T23:43:18.853750238Z
 5 send msg,5
-New line added: 5 p52 2023-11-24T01:55:14.779299877Z
+New line added: 5 p52 2023-11-27T23:43:18.853750238Z
 5 send msg,5
-New line added: 5 p52 2023-11-24T01:55:14.779299877Z
+New line added: 5 p52 2023-11-27T23:43:18.853750238Z
 5 send msg,5
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 3 p33 2023-11-24T01:55:45.804364488Z
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+New line added: 3 p33 2023-11-27T23:43:49.876219596Z
 3 send msg,5
-Timestamp: seconds: 1700790945
-nanos: 804364488
+Timestamp: seconds: 1701128629
+nanos: 876219596
 
-New line added: 3 p34 2023-11-24T01:55:46.305016708Z
+New line added: 3 p34 2023-11-27T23:43:50.376541409Z
 3 send msg,5
-Timestamp: seconds: 1700790946
-nanos: 305016708
+Timestamp: seconds: 1701128630
+nanos: 376541409
 
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 USER: 2 JOIN TIMELINE!
 Monitor File Change: TIMELINE_2_2_2.txt
-INFO: 3 p34 2023-11-24T01:55:46.305016708Z
-2 follow 3 in 2023-11-24T01:51:26.610069914Z
-Timestamp: seconds: 1700790946
-nanos: 305016708
+INFO: 3 p34 2023-11-27T23:43:50.376541409Z
+2 follow 3 in 2023-11-27T23:39:30.691976027Z
+Timestamp: seconds: 1701128630
+nanos: 376541409
 
-INFO: 3 p33 2023-11-24T01:55:45.804364488Z
-2 follow 3 in 2023-11-24T01:51:26.610069914Z
-Timestamp: seconds: 1700790945
-nanos: 804364488
+INFO: 3 p33 2023-11-27T23:43:49.876219596Z
+2 follow 3 in 2023-11-27T23:39:30.691976027Z
+Timestamp: seconds: 1701128629
+nanos: 876219596
 
-INFO: 5 p52 2023-11-24T01:55:14.779299877Z
-2 follow 5 in 2023-11-24T01:54:40.772550307Z
-Timestamp: seconds: 1700790914
-nanos: 779299877
+INFO: 5 p52 2023-11-27T23:43:18.853750238Z
+2 follow 5 in 2023-11-27T23:42:44.849427800Z
+Timestamp: seconds: 1701128598
+nanos: 853750238
 
-INFO: 5 p51 2023-11-24T01:55:14.278137102Z
-2 follow 5 in 2023-11-24T01:54:40.772550307Z
-Timestamp: seconds: 1700790914
-nanos: 278137102
+INFO: 5 p51 2023-11-27T23:43:18.352908159Z
+2 follow 5 in 2023-11-27T23:42:44.849427800Z
+Timestamp: seconds: 1701128598
+nanos: 352908159
 
-INFO: 3 p32 2023-11-24T01:53:03.689611915Z
-2 follow 3 in 2023-11-24T01:51:26.610069914Z
-Timestamp: seconds: 1700790783
-nanos: 689611915
+INFO: 3 p32 2023-11-27T23:41:07.766321983Z
+2 follow 3 in 2023-11-27T23:39:30.691976027Z
+Timestamp: seconds: 1701128467
+nanos: 766321983
 
-INFO: 3 p31 2023-11-24T01:53:03.180920461Z
-2 follow 3 in 2023-11-24T01:51:26.610069914Z
-Timestamp: seconds: 1700790783
-nanos: 180920461
+INFO: 3 p31 2023-11-27T23:41:07.254357988Z
+2 follow 3 in 2023-11-27T23:39:30.691976027Z
+Timestamp: seconds: 1701128467
+nanos: 254357988
 
-INFO: 2 p22 2023-11-24T01:52:32.154597825Z
-INFO: 2 p21 2023-11-24T01:52:31.653978972Z
-INFO: 1 p12 2023-11-24T01:52:00.632931791Z
-2 follow 1 in 2023-11-24T01:51:26.108702241Z
-Timestamp: seconds: 1700790720
-nanos: 632931791
+INFO: 2 p22 2023-11-27T23:40:36.223819886Z
+INFO: 2 p21 2023-11-27T23:40:35.723192203Z
+INFO: 1 p12 2023-11-27T23:40:04.719233125Z
+2 follow 1 in 2023-11-27T23:39:30.191234272Z
+Timestamp: seconds: 1701128404
+nanos: 719233125
 
-INFO: 1 p11 2023-11-24T01:52:00.132100794Z
-2 follow 1 in 2023-11-24T01:51:26.108702241Z
-Timestamp: seconds: 1700790720
-nanos: 132100794
+INFO: 1 p11 2023-11-27T23:40:04.218636844Z
+2 follow 1 in 2023-11-27T23:39:30.191234272Z
+Timestamp: seconds: 1701128404
+nanos: 218636844
 
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 Same cluster
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 2 p23 2023-11-24T01:56:17.320801653Z
+New line added: 2 p23 2023-11-27T23:44:21.403032116Z
 2 send msg,5
-Timestamp: seconds: 1700790977
-nanos: 320801653
+Timestamp: seconds: 1701128661
+nanos: 403032116
 
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 Same cluster
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 My slave is DOWN!!! 1, Host: 127.0.0.1, Port: 20000
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
-New line added: 2 p23 2023-11-24T01:56:17.320801653Z
+New line added: 2 p23 2023-11-27T23:44:21.403032116Z
 2 send msg,2
-New line added: 2 p24 2023-11-24T01:56:17.829691177Z
+New line added: 2 p23 2023-11-27T23:44:21.403032116Z
+2 send msg,2
+New line added: 2 p23 2023-11-27T23:44:21.403032116Z
+2 send msg,2
+New line added: 2 p24 2023-11-27T23:44:21.913747212Z
+2 send msg,2
+New line added: 2 p24 2023-11-27T23:44:21.913747212Z
+2 send msg,2
+New line added: 2 p24 2023-11-27T23:44:21.913747212Z
 2 send msg,2
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 2 p24 2023-11-24T01:56:17.829691177Z
+New line added: 2 p24 2023-11-27T23:44:21.913747212Z
 2 send msg,5
-Timestamp: seconds: 1700790977
-nanos: 829691177
+Timestamp: seconds: 1701128661
+nanos: 913747212
 
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+New line added: 1 p13 2023-11-27T23:44:52.931024810Z
 1 send msg,5
-Timestamp: seconds: 1700791008
-nanos: 851005219
+Timestamp: seconds: 1701128692
+nanos: 931024810
 
-New line added: 1 p14 2023-11-24T01:56:49.352705751Z
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+New line added: 1 p13 2023-11-27T23:44:52.931024810Z
+1 send msg,2
+Timestamp: seconds: 1701128692
+nanos: 931024810
+
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+New line added: 1 p14 2023-11-27T23:44:53.432031846Z
 1 send msg,5
-Timestamp: seconds: 1700791009
-nanos: 352705751
+Timestamp: seconds: 1701128693
+nanos: 432031846
 
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
-New line added: 1 p13 2023-11-24T01:56:48.851005219Z
+New line added: 1 p14 2023-11-27T23:44:53.432031846Z
 1 send msg,2
-Timestamp: seconds: 1700791008
-nanos: 851005219
-
-New line added: 1 p14 2023-11-24T01:56:49.352705751Z
-1 send msg,2
-Timestamp: seconds: 1700791009
-nanos: 352705751
+Timestamp: seconds: 1701128693
+nanos: 432031846
 
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
 Login:5
 My slave is: 1, Host: 127.0.0.1, Port: 20000
+User: 5re-login, finish monitorFile
 LIST
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 USER: 5 JOIN TIMELINE!
 Monitor File Change: TIMELINE_2_2_5.txt
-INFO: 1 p14 2023-11-24T01:56:49.352705751Z
-5 follow 1 in 2023-11-24T01:54:38.767679633Z
-Timestamp: seconds: 1700791009
-nanos: 352705751
+INFO: 1 p14 2023-11-27T23:44:53.432031846Z
+5 follow 1 in 2023-11-27T23:42:42.843265087Z
+Timestamp: seconds: 1701128693
+nanos: 432031846
 
-INFO: 1 p13 2023-11-24T01:56:48.851005219Z
-5 follow 1 in 2023-11-24T01:54:38.767679633Z
-Timestamp: seconds: 1700791008
-nanos: 851005219
+INFO: 1 p13 2023-11-27T23:44:52.931024810Z
+5 follow 1 in 2023-11-27T23:42:42.843265087Z
+Timestamp: seconds: 1701128692
+nanos: 931024810
 
-INFO: 2 p24 2023-11-24T01:56:17.829691177Z
-5 follow 2 in 2023-11-24T01:54:39.264421185Z
-Timestamp: seconds: 1700790977
-nanos: 829691177
+INFO: 2 p24 2023-11-27T23:44:21.913747212Z
+5 follow 2 in 2023-11-27T23:42:43.343190508Z
+Timestamp: seconds: 1701128661
+nanos: 913747212
 
-INFO: 2 p23 2023-11-24T01:56:17.320801653Z
-5 follow 2 in 2023-11-24T01:54:39.264421185Z
-Timestamp: seconds: 1700790977
-nanos: 320801653
+INFO: 2 p23 2023-11-27T23:44:21.403032116Z
+5 follow 2 in 2023-11-27T23:42:43.343190508Z
+Timestamp: seconds: 1701128661
+nanos: 403032116
 
-INFO: 3 p34 2023-11-24T01:55:46.305016708Z
-5 follow 3 in 2023-11-24T01:54:39.767822812Z
-Timestamp: seconds: 1700790946
-nanos: 305016708
+INFO: 3 p34 2023-11-27T23:43:50.376541409Z
+5 follow 3 in 2023-11-27T23:42:43.846293050Z
+Timestamp: seconds: 1701128630
+nanos: 376541409
 
-INFO: 3 p33 2023-11-24T01:55:45.804364488Z
-5 follow 3 in 2023-11-24T01:54:39.767822812Z
-Timestamp: seconds: 1700790945
-nanos: 804364488
+INFO: 3 p33 2023-11-27T23:43:49.876219596Z
+5 follow 3 in 2023-11-27T23:42:43.846293050Z
+Timestamp: seconds: 1701128629
+nanos: 876219596
 
-INFO: 5 p52 2023-11-24T01:55:14.779299877Z
-INFO: 5 p51 2023-11-24T01:55:14.278137102Z
-INFO: 3 p32 2023-11-24T01:53:03.689611915Z
-5 follow 3 in 2023-11-24T01:54:39.767822812Z
-SKIP TIMELINE, 3 p32 2023-11-24T01:53:03.689611915Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.689611915Z
-INFO: 3 p31 2023-11-24T01:53:03.180920461Z
-5 follow 3 in 2023-11-24T01:54:39.767822812Z
-SKIP TIMELINE, 3 p31 2023-11-24T01:53:03.180920461Z 2023-11-24T01:54:39.767822812Z > 2023-11-24T01:53:03.180920461Z
-INFO: 2 p22 2023-11-24T01:52:32.154597825Z
-5 follow 2 in 2023-11-24T01:54:39.264421185Z
-SKIP TIMELINE, 2 p22 2023-11-24T01:52:32.154597825Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:32.154597825Z
-INFO: 2 p21 2023-11-24T01:52:31.653978972Z
-5 follow 2 in 2023-11-24T01:54:39.264421185Z
-SKIP TIMELINE, 2 p21 2023-11-24T01:52:31.653978972Z 2023-11-24T01:54:39.264421185Z > 2023-11-24T01:52:31.653978972Z
-INFO: 1 p12 2023-11-24T01:52:00.632931791Z
-5 follow 1 in 2023-11-24T01:54:38.767679633Z
-SKIP TIMELINE, 1 p12 2023-11-24T01:52:00.632931791Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.632931791Z
-INFO: 1 p11 2023-11-24T01:52:00.132100794Z
-5 follow 1 in 2023-11-24T01:54:38.767679633Z
-SKIP TIMELINE, 1 p11 2023-11-24T01:52:00.132100794Z 2023-11-24T01:54:38.767679633Z > 2023-11-24T01:52:00.132100794Z
+INFO: 5 p52 2023-11-27T23:43:18.853750238Z
+INFO: 5 p51 2023-11-27T23:43:18.352908159Z
+INFO: 3 p32 2023-11-27T23:41:07.766321983Z
+5 follow 3 in 2023-11-27T23:42:43.846293050Z
+SKIP TIMELINE, 3 p32 2023-11-27T23:41:07.766321983Z 2023-11-27T23:42:43.846293050Z > 2023-11-27T23:41:07.766321983Z
+INFO: 3 p31 2023-11-27T23:41:07.254357988Z
+5 follow 3 in 2023-11-27T23:42:43.846293050Z
+SKIP TIMELINE, 3 p31 2023-11-27T23:41:07.254357988Z 2023-11-27T23:42:43.846293050Z > 2023-11-27T23:41:07.254357988Z
+INFO: 2 p22 2023-11-27T23:40:36.223819886Z
+5 follow 2 in 2023-11-27T23:42:43.343190508Z
+SKIP TIMELINE, 2 p22 2023-11-27T23:40:36.223819886Z 2023-11-27T23:42:43.343190508Z > 2023-11-27T23:40:36.223819886Z
+INFO: 2 p21 2023-11-27T23:40:35.723192203Z
+5 follow 2 in 2023-11-27T23:42:43.343190508Z
+SKIP TIMELINE, 2 p21 2023-11-27T23:40:35.723192203Z 2023-11-27T23:42:43.343190508Z > 2023-11-27T23:40:35.723192203Z
+INFO: 1 p12 2023-11-27T23:40:04.719233125Z
+5 follow 1 in 2023-11-27T23:42:42.843265087Z
+SKIP TIMELINE, 1 p12 2023-11-27T23:40:04.719233125Z 2023-11-27T23:42:42.843265087Z > 2023-11-27T23:40:04.719233125Z
+INFO: 1 p11 2023-11-27T23:40:04.218636844Z
+5 follow 1 in 2023-11-27T23:42:42.843265087Z
+SKIP TIMELINE, 1 p11 2023-11-27T23:40:04.218636844Z 2023-11-27T23:42:42.843265087Z > 2023-11-27T23:40:04.218636844Z
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 Same cluster
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 My slave is: 1, Host: 127.0.0.1, Port: 20000
+try get lock: FOLLOWER_2_2.txt
+get lock: FOLLOWER_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 Same cluster
 WRITE FILE =============
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 WRITE FILE =============
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 My slave is: 1, Host: 127.0.0.1, Port: 20000
-User: 5re-login, finish monitorFile
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
-New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+New line added: 5 p53 2023-11-27T23:45:56.999205788Z
 5 send msg,5
-New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+New line added: 5 p53 2023-11-27T23:45:56.999205788Z
 5 send msg,5
-New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+New line added: 5 p53 2023-11-27T23:45:56.999205788Z
 5 send msg,5
-New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+New line added: 5 p54 2023-11-27T23:45:57.499770931Z
 5 send msg,5
-New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+New line added: 5 p54 2023-11-27T23:45:57.499770931Z
 5 send msg,5
-New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+New line added: 5 p54 2023-11-27T23:45:57.499770931Z
 5 send msg,5
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
-New line added: 5 p53 2023-11-24T01:57:52.930069818Z
+New line added: 5 p53 2023-11-27T23:45:56.999205788Z
 5 send msg,2
-Timestamp: seconds: 1700791072
-nanos: 930069818
+Timestamp: seconds: 1701128756
+nanos: 999205788
 
-New line added: 5 p54 2023-11-24T01:57:53.430231218Z
+New line added: 5 p54 2023-11-27T23:45:57.499770931Z
 5 send msg,2
-Timestamp: seconds: 1700791073
-nanos: 430231218
-
-TRY GET LOCK
-GET lock,TIMELINE_2_2_5.txt
-TRY GET LOCK
-GET lock,TIMELINE_2_2_2.txt
-New line added: 5 p54 2023-11-24T01:57:53.430231218Z
-5 send msg,2
-Timestamp: seconds: 1700791073
-nanos: 430231218
-
-New line added: 5 p54 2023-11-24T01:57:53Z
-5 send msg,2
-Timestamp: seconds: 1700791073
+Timestamp: seconds: 1701128757
+nanos: 499770931
 
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
 GET lock,TIMELINE_2_2_5.txt
 TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
+GET lock,TIMELINE_2_2_2.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_5.txt
+get lock: TIMELINE_2_2_5.txt
+GET lock,TIMELINE_2_2_5.txt
+TRY GET LOCK
+try get lock: TIMELINE_2_2_2.txt
+get lock: TIMELINE_2_2_2.txt
 GET lock,TIMELINE_2_2_2.txt

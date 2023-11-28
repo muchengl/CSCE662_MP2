@@ -1,98 +1,271 @@
+clusterID:1 serverID:1
+Server listening on 0.0.0.0:10000
 clusterID:1 serverID:2
 Server listening on 0.0.0.0:10001
+Login:1
+Create file
+My slave is: 2, Host: 127.0.0.1, Port: 10001
 Login:1
 Create file
 I am slave
 Login:4
 Create file
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+Login:4
+Create file
 I am slave
+LIST
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+LIST
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+Follow: 1 -> 4
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 Follow: 1 -> 4
 I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+Follow: 4 -> 1
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 Follow: 4 -> 1
 I am slave
-WRITE FILE =============
-Same cluster
-WRITE FILE =============
-I am slave
-WRITE FILE =============
-Same cluster
-WRITE FILE =============
-I am slave
-WRITE FILE =============
-Same cluster
-WRITE FILE =============
-I am slave
-WRITE FILE =============
-Same cluster
-WRITE FILE =============
-I am slave
-WRITE FILE =============
-Same cluster
-WRITE FILE =============
-I am slave
-127.0.0.1, Port: 10001
-New line added: 1 p11 2023-11-22T21:43:30Z
-1 send msg,1
+LIST
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+LIST
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+USER: 1 JOIN TIMELINE!
+Monitor File Change: TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 GET lock,TIMELINE_1_1_1.txt
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 WRITE FILE =============
-IN_MODIFY
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 Same cluster
 WRITE FILE =============
-GET lock,TIMELINE_1_1_1.txt
-New line added: 1 p12 2023-11-22T21:43:31Z
-1 send msg,1
-GET lock,TIMELINE_1_1_1.txt
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 WRITE FILE =============
-IN_MODIFY
-GET lock,TIMELINE_1_1_1.txt
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
 Same cluster
 WRITE FILE =============
-New line added: 1 p13 2023-11-22T21:43:31Z
-1 send msg,1
-GET lock,TIMELINE_1_1_1.txt
+try get lock: TIMELINE_1_2_4.txt
+get lock: TIMELINE_1_2_4.txt
+I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_1_2_4.txt
+get lock: TIMELINE_1_2_4.txt
+I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_1_2_4.txt
+get lock: TIMELINE_1_2_4.txt
+I am slave
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+New line added: 1 p11 2023-11-27T23:47:43.477965984Z
+1 send msg,1
+New line added: 1 p12 2023-11-27T23:47:43.978707396Z
+1 send msg,1
+New line added: 1 p13 2023-11-27T23:47:44.479473765Z
+1 send msg,1
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 USER: 4 JOIN TIMELINE!
 Monitor File Change: TIMELINE_1_1_4.txt
-INFO: 1 p13 2023-11-22T21:43:31Z
-Timestamp: seconds: 1700689411
-
-INFO: 1 p12 2023-11-22T21:43:31Z
-Timestamp: seconds: 1700689411
-
-INFO: 1 p11 2023-11-22T21:43:30Z
-Timestamp: seconds: 1700689410
-
+INFO: 1 p13 2023-11-27T23:47:44.479473765Z
+4 follow 1 in 2023-11-27T23:47:41.475757436Z
+Timestamp: TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
 GET lock,TIMELINE_1_1_4.txt
+seconds: 1701128864
+nanos: 479473765
+
+INFO: 1 p12 2023-11-27T23:47:43.978707396Z
+4 follow 1 in 2023-11-27T23:47:41.475757436Z
+Timestamp: seconds: 1701128863
+nanos: 978707396
+
+INFO: 1 p11 2023-11-27T23:47:43.477965984Z
+4 follow 1 in 2023-11-27T23:47:41.475757436Z
+Timestamp: seconds: 1701128863
+nanos: 477965984
+
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
 WRITE FILE =============
-IN_MODIFY
-GET lock,TIMELINE_1_1_4.txt
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
 Same cluster
 WRITE FILE =============
-New line added: 4 p41 2023-11-22T21:43:32Z
-4 send msg,4
-GET lock,TIMELINE_1_1_4.txt
-IN_MODIFY
-GET lock,TIMELINE_1_1_1.txt
-New line added: 4 p41 2023-11-22T21:43:32Z
-4 send msg,1
-Timestamp: seconds: 1700689412
-
-GET lock,TIMELINE_1_1_1.txt
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
 WRITE FILE =============
-IN_MODIFY
-GET lock,TIMELINE_1_1_4.txt
+try get lock: TIMELINE_1_2_4.txt
+get lock: TIMELINE_1_2_4.txt
 Same cluster
 WRITE FILE =============
-IN_MODIFY
-GET lock,TIMELINE_1_1_1.txt
-New line added: 4 p42 2023-11-22T21:43:33Z
-4 send msg,1
-Timestamp: seconds: 1700689413
-
-GET lock,TIMELINE_1_1_1.txt
-New line added: 4 p42 2023-11-22T21:43:33Z
-4 send msg,4
-GET lock,TIMELINE_1_1_4.txt
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
+I am slave
+try get lock: FOLLOWER_1_1.txt
+get lock: FOLLOWER_1_1.txt
+WRITE FILE =============
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+try get lock: FOLLOWER_1_2.txt
+get lock: FOLLOWER_1_2.txt
+WRITE FILE =============
+try get lock: TIMELINE_1_2_4.txt
+get lock: TIMELINE_1_2_4.txt
+Same cluster
+WRITE FILE =============
+try get lock: TIMELINE_1_2_1.txt
+get lock: TIMELINE_1_2_1.txt
+I am slave
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+New line added: 4 p41 2023-11-27T23:47:45.480979837Z
+4 send msg,1
+Timestamp: seconds: 1701128865
+nanos: 480979837
+
+New line added: 4 p42 2023-11-27T23:47:45.981447425Z
+4 send msg,1
+Timestamp: seconds: 1701128865
+nanos: 981447425
+
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+New line added: 4 p41 2023-11-27T23:47:45.480979837Z
+4 send msg,4
+New line added: 4 p42 2023-11-27T23:47:45.981447425Z
+4 send msg,4
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_1.txt
+get lock: TIMELINE_1_1_1.txt
+GET lock,TIMELINE_1_1_1.txt
+TRY GET LOCK
+try get lock: TIMELINE_1_1_4.txt
+get lock: TIMELINE_1_1_4.txt
+GET lock,TIMELINE_1_1_4.txt

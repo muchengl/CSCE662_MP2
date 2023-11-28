@@ -58,6 +58,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <chrono>
+#include <algorithm>
 
 #define log(severity, msg) LOG(severity) << msg; google::FlushLogFiles(google::severity); 
 
@@ -136,48 +137,48 @@ int getUserVersion(std::string uname){
 }
 
 int lockFile(const std::string& filePath) {
-  // std::cout<<"try get lock: "<<filePath<<std::endl;
-  //   int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
-  //   if (fd == -1) {
-  //       return -1;  // 打开文件失败
-  //   }
+  std::cout<<"try get lock: "<<filePath<<std::endl;
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
 
-  //   struct flock fl;
-  //   fl.l_type = F_WRLCK;   // 设置为写锁
-  //   fl.l_whence = SEEK_SET;
-  //   fl.l_start = 0;        // 锁定整个文件
-  //   fl.l_len = 0;          // 0 表示锁定到文件末尾
-  //   fl.l_pid = getpid();
+    struct flock fl;
+    fl.l_type = F_WRLCK;   // 设置为写锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 锁定整个文件
+    fl.l_len = 0;          // 0 表示锁定到文件末尾
+    fl.l_pid = getpid();
 
-  //   if (fcntl(fd, F_SETLK, &fl) == -1) {
-  //       close(fd);
-  //       return -1;  // 获取锁失败
-  //   }
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 获取锁失败
+    }
 
-  //   close(fd);  // 关闭文件描述符
-  //   std::cout<<"get lock: "<<filePath<<std::endl;
+    close(fd);  // 关闭文件描述符
+    std::cout<<"get lock: "<<filePath<<std::endl;
     return 0;    // 锁定成功
 }
 
 int unlockFile(const std::string& filePath) {
-    // int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
-    // if (fd == -1) {
-    //     return -1;  // 打开文件失败
-    // }
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
 
-    // struct flock fl;
-    // fl.l_type = F_UNLCK;   // 设置为解锁
-    // fl.l_whence = SEEK_SET;
-    // fl.l_start = 0;        // 解锁整个文件
-    // fl.l_len = 0;          // 0 表示解锁到文件末尾
-    // fl.l_pid = getpid();
+    struct flock fl;
+    fl.l_type = F_UNLCK;   // 设置为解锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 解锁整个文件
+    fl.l_len = 0;          // 0 表示解锁到文件末尾
+    fl.l_pid = getpid();
 
-    // if (fcntl(fd, F_SETLK, &fl) == -1) {
-    //     close(fd);
-    //     return -1;  // 解锁失败
-    // }
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 解锁失败
+    }
 
-    // close(fd);  // 关闭文件描述符
+    close(fd);  // 关闭文件描述符
     return 0;    // 解锁成功
 }
 
@@ -291,7 +292,7 @@ void monitorFile(std::string filepath,ServerReaderWriter<Message, Message>* stre
   std::vector<std::string>* oldLines  = &init;
 
     while (true) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(4000));
+      std::this_thread::sleep_for(std::chrono::milliseconds(2000));
       // check user's version
       if(getUserVersion(uname)!=uv){
         break;
@@ -502,18 +503,34 @@ public:
 
     // std::unique_lock<std::mutex> lock(mu);
 
+    std::vector<std::string> allUser;
+    std::vector<std::string> followers;
+
     // add all username from client_db to list_reply
     for(int i=0;i<client_db.size();i++){
-      list_reply->add_all_users(client_db[i].username);
+      // list_reply->add_all_users(client_db[i].username);
+      allUser.push_back(client_db[i].username);
     }
 
     // add all user's followers from client_db to list_reply
     for(int i=0;i<client_db.size();i++){
       if(client_db[i].username != request->username()) continue;
       for(int j=0;j<client_db[i].client_followers.size();j++){
-        list_reply->add_followers(client_db[i].client_followers[j]->username);
+        // list_reply->add_followers(client_db[i].client_followers[j]->username);
+        followers.push_back(client_db[i].client_followers[j]->username);
       }
     }
+
+
+    std::sort(allUser.begin(),allUser.end());
+    std::sort(followers.begin(),followers.end());
+
+    for(int i=allUser.size()-1;i>=0;i--)
+      list_reply->add_all_users(allUser[i]);
+
+    for(int i=followers.size()-1;i>=0;i--)
+      list_reply->add_followers(followers[i]);
+
 
     return Status::OK;
   }
@@ -774,7 +791,7 @@ public:
       return file.good();
   }
 
-  std::map<std::string, std::set<std::string>> msgset;
+  std::map<std::string, std::set<std::string>*> msgset;
 
   std::string get_follow_time(std::string follower,std::string following){
     for(Client c:client_db){
@@ -798,15 +815,18 @@ public:
         
         int idx=0;
         std::string line;
+
+        std::vector<Message> msgs;
+
         while (idx<20 && std::getline(timeline_file, line)) {
           idx++;
           std::cout<<"INFO: "<<line<<"\n";
 
           // avoid resend the same msg
           if(msgset.find(m.username()) == msgset.end()){
-            msgset[m.username()] = *(new std::set<std::string>());
+            msgset[m.username()] = new std::set<std::string>();
           }
-          std::set<std::string> mset=msgset[m.username()];
+          std::set<std::string> mset=*msgset[m.username()];
           if(mset.find(line) != mset.end()) continue;
           mset.insert(line);
 
@@ -845,9 +865,15 @@ public:
 
           msg.set_allocated_timestamp(timestamp);
 
+          msgs.push_back(msg);
           // send msg to user
-          stream->Write(msg);          
+          //stream->Write(msg);          
         } 
+
+
+        for(int i=msgs.size()-1;i>=0;i--){
+          stream->Write(msgs[i]);  
+        }
   }
 
   void write_timeline_file(std::string record,std::string name){
@@ -1017,8 +1043,8 @@ public:
 
     ClientContext *context = new ClientContext();  
     std::shared_ptr<ClientReaderWriter<Message,Message>> rw = slave_stub_->Timeline(context);
-    Message m = MakeMessage(message->username(),message->msg());
-    rw->Write(m);
+    //Message m = MakeMessage(message->username(),message->msg());
+    rw->Write(*message);
   }
 
 };

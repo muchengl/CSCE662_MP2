@@ -64,8 +64,8 @@ def run_section(idx,commands,processes,output):
     elif commands[0].startswith("SLEEP") :
         # print("SLEEP : ",commands[1])
         # time.sleep(float(commands[1]))
-        print("SLEEP : ",30)
-        time.sleep(30)
+        print("SLEEP : ",60)
+        time.sleep(60)
         if commands[1] == "10000":
             time.sleep(10000)
     

@@ -45,6 +45,12 @@ if [ "$arg0" = "--kill" ]; then
     pid=$(lsof -t -i:9001)
     kill -9 $pid
 
+    pid=$(lsof -t -i:9002)
+    kill -9 $pid
+
+    pid=$(lsof -t -i:9003)
+    kill -9 $pid
+
     pid=$(lsof -t -i:3010)
     kill -9 $pid
 

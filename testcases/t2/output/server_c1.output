@@ -1,289 +1,48 @@
+clusterID:1 serverID:1
+Server listening on 0.0.0.0:10000
 clusterID:1 serverID:2
 Server listening on 0.0.0.0:10001
 Login:1
 Create file
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+Login:1
+Create file
 I am slave
+LIST
+Can't find user: 2, new user
+Follow: 1 -> 2
+My slave is: 2, Host: 127.0.0.1, Port: 10001
+Can't find user: 2, new user
 Follow: 1 -> 2
 I am slave
 Follow: 1 -> 3
-I am slave
-WRITE FILE =============
-WRITE FILE =============
-I am slave
-WRITE FILE =============
-WRITE FILE =============
-I am slave
-IN TIMELINE!
+Can't find 3
+LIST
+Can't find user: 3, new user
+USER: 1 JOIN TIMELINE!
 Monitor File Change: TIMELINE_1_1_1.txt
 TRY GET LOCK
 GET lock,TIMELINE_1_1_1.txt
 WRITE FILE =============
 WRITE FILE =============
 My slave is: 2, Host: 127.0.0.1, Port: 10001
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-New line added: 1 p11 2023-11-23T04:01:50Z
-1 send msg,1
-New line added: 1 p11 2023-11-23T04:01:50Z
-1 send msg,1
+Can't find user: 3, new user
+WRITE FILE =============
+WRITE FILE =============
+I am slave
 WRITE FILE =============
 WRITE FILE =============
 My slave is: 2, Host: 127.0.0.1, Port: 10001
+WRITE FILE =============
+WRITE FILE =============
+I am slave
 TRY GET LOCK
 GET lock,TIMELINE_1_1_1.txt
-New line added: 1 p12 2023-11-23T04:01:51Z
+New line added: 1 p11 2023-11-25T18:59:38.304239070Z
 1 send msg,1
-New line added: 1 p12 2023-11-23T04:01:51Z
+New line added: 1 p11 2023-11-25T18:59:38.304239070Z
 1 send msg,1
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-New line added: 2 p22 2023-11-23T04:02:07Z
-2 send msg,1
-Timestamp: seconds: 1700712127
-
-New line added: 2 p21 2023-11-23T04:02:07Z
-2 send msg,1
-Timestamp: seconds: 1700712127
-
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-New line added: 3 p32 2023-11-23T04:02:24Z
-3 send msg,1
-Timestamp: seconds: 1700712144
-
-New line added: 3 p31 2023-11-23T04:02:23Z
-3 send msg,1
-Timestamp: seconds: 1700712143
-
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
-TRY GET LOCK
-GET lock,TIMELINE_1_1_1.txt
+New line added: 1 p12 2023-11-25T18:59:38.804901624Z
+1 send msg,1
+New line added: 1 p12 2023-11-25T18:59:38.804901624Z
+1 send msg,1

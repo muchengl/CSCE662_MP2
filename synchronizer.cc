@@ -246,18 +246,20 @@ int main(int argc, char** argv) {
   std::string coordPort="3010";
   std::string port = "3029";
 
-  while ((opt = getopt(argc, argv, "h:j:p:n:")) != -1){
+  // ./synchronizer -h localhost -k 9000 -p 9001 -i 1
+
+  while ((opt = getopt(argc, argv, "h:k:p:i:")) != -1){
     switch(opt) {
       case 'h':
           coordIP = optarg;
           break;
-      case 'j':
+      case 'k':
           coordPort = optarg;
           break;
       case 'p':
           port = optarg;
           break;
-      case 'n':
+      case 'i':
           synchID = std::stoi(optarg);
           break;
       default:
@@ -604,46 +606,46 @@ TimelineEntry parseTimelineEntry(const std::string& entryStr) {
 }
 
 int lockFile(const std::string& filePath) {
-    // int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
-    // if (fd == -1) {
-    //     return -1;  // 打开文件失败
-    // }
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
 
-    // struct flock fl;
-    // fl.l_type = F_WRLCK;   // 设置为写锁
-    // fl.l_whence = SEEK_SET;
-    // fl.l_start = 0;        // 锁定整个文件
-    // fl.l_len = 0;          // 0 表示锁定到文件末尾
-    // fl.l_pid = getpid();
+    struct flock fl;
+    fl.l_type = F_WRLCK;   // 设置为写锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 锁定整个文件
+    fl.l_len = 0;          // 0 表示锁定到文件末尾
+    fl.l_pid = getpid();
 
-    // if (fcntl(fd, F_SETLK, &fl) == -1) {
-    //     close(fd);
-    //     return -1;  // 获取锁失败
-    // }
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 获取锁失败
+    }
 
-    // close(fd);  // 关闭文件描述符
+    close(fd);  // 关闭文件描述符
     return 0;    // 锁定成功
 }
 
 int unlockFile(const std::string& filePath) {
-    // int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
-    // if (fd == -1) {
-    //     return -1;  // 打开文件失败
-    // }
+    int fd = open(filePath.c_str(), O_RDWR | O_CREAT,0644);
+    if (fd == -1) {
+        return -1;  // 打开文件失败
+    }
 
-    // struct flock fl;
-    // fl.l_type = F_UNLCK;   // 设置为解锁
-    // fl.l_whence = SEEK_SET;
-    // fl.l_start = 0;        // 解锁整个文件
-    // fl.l_len = 0;          // 0 表示解锁到文件末尾
-    // fl.l_pid = getpid();
+    struct flock fl;
+    fl.l_type = F_UNLCK;   // 设置为解锁
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;        // 解锁整个文件
+    fl.l_len = 0;          // 0 表示解锁到文件末尾
+    fl.l_pid = getpid();
 
-    // if (fcntl(fd, F_SETLK, &fl) == -1) {
-    //     close(fd);
-    //     return -1;  // 解锁失败
-    // }
+    if (fcntl(fd, F_SETLK, &fl) == -1) {
+        close(fd);
+        return -1;  // 解锁失败
+    }
 
-    // close(fd);  // 关闭文件描述符
+    close(fd);  // 关闭文件描述符
     return 0;    // 解锁成功
 }
 
